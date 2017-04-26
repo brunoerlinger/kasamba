@@ -4,10 +4,22 @@ class MyProductsController < ApplicationController
 
     @my_products = current_user.products
 
+
   end
 
   def show
     @my_product = Product.find(params[:id])
+
+    @my_products = Product.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@my_products) do |product, marker|
+      marker.lat product.latitude
+      marker.lng product.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+
+
+    end
+
   end
 
   def new
@@ -39,8 +51,6 @@ class MyProductsController < ApplicationController
     @my_product.destroy
     redirect_to my_products_path
   end
-
-
 
 
 private

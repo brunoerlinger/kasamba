@@ -15,8 +15,8 @@ class User < ApplicationRecord
   # has_many :messages, through: :chats
 
   validates :first_name, :last_name, :address, :city, :zip_code, presence: true
-  validates :password, :country, presence: false
-  validates :email, :username, presence: true, uniqueness: true
+  validates :country, :state, :borough, presence: true
+  validates :username, presence: true, uniqueness: true
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,

@@ -1,0 +1,10 @@
+
+  <h3><%= link_to my_product.name, my_product_path(my_product) %></h3>
+  <h4><%= my_product.name %></h4>
+  <h4><%= my_product.address %></h4>
+ <% if my_product.photos? %>
+  <% my_product.photos.each do |photo| %>
+    <%= cl_image_tag photo.path, width: 200, height: 300, crop: :fill %>
+  <% end %>
+<% end %>
+

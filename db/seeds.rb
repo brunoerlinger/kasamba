@@ -110,8 +110,8 @@ papel = Category.create(name: "Papel", parent: residuos)
 
 garrafa_papel = Category.create(name: "Tetrapak/Garrafa de Papelão", parent: papel)
 pedaco_papel = Category.create(name: "Pedaços de Papel", parent: papel)
-livro = Category.create(name: "Livro/Apostila", parent: residuos)
-caixa = Category.create(name: "Caixa de Papelão", parent: residuos)
+livro = Category.create(name: "Livro/Apostila", parent: papel)
+caixa = Category.create(name: "Caixa de Papelão", parent: papel)
 
 pneus = Category.create(name: "Pneus Inservíveis", parent: residuos)
 

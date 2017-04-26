@@ -16,11 +16,10 @@
          <div class="card-description">
            <h2><%= category.name %></h2>
          </div>
-         <%#= link_to category, services_path(category: category), class: "card-link" %>
+         <%= link_to category, products_path(category: category), class: "card-link" %>
        </div>
      </div>
      <% end %>
    </div>
  </div>
 
- <%= link_to 'Ver Meus Produtos', my_products_path, class:"btn btn-primary" %>

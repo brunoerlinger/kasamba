@@ -1,0 +1,10 @@
+#INDEX | My_product
+
+<div class=>
+<% @my_products.each do |product|  %>
+  <h3><%= link_to product.description, my_product_path(product) %></h3>
+  <% end %>
+</div>
+
+
+<%= link_to 'Crie um novo produto', new_my_product_path, class:"btn btn-primary" %>

@@ -21,6 +21,8 @@ gem 'autoprefixer-rails'
 gem "geocoder"
 gem "coffee-rails"
 gem "gmaps4rails"
+gem "pundit"
+
 
 group :development, :test do
   gem 'binding_of_caller'

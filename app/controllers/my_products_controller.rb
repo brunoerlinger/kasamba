@@ -7,6 +7,7 @@ class MyProductsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@my_products) do |product, marker|
       marker.lat product.latitude
       marker.lng product.longitude
+      marker.infowindow render_to_string(partial: "/my_products/map_box_index", locals: { my_product: product })
     end
 
   end
@@ -17,11 +18,17 @@ class MyProductsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@my_product) do |product, marker|
       marker.lat product.latitude
       marker.lng product.longitude
-      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+      marker.infowindow render_to_string(partial: "/my_products/map_box", locals: { my_product: product })
 
     end
 
   end
+
+  def gmaps4rails_infowindow
+      # add here whatever html content you desire, it will be displayed when users clicks on the marker
+
+  end
+
 
   def new
     @my_product = Product.new

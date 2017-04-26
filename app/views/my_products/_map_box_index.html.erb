@@ -1,0 +1,5 @@
+<% @my_products.each do |product|%>
+  <h3><%= link_to product.name, my_product_path(product) %></h3>
+  <h4><%= product.name %></h4>
+  <h4><%= product.address %></h4>
+<% end %>

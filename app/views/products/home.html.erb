@@ -1,0 +1,24 @@
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('');">
+  <div class="banner-content">
+    <h1>Kasamba</h1>
+    <p>Making waste useful</p>
+    <%#= link_to "Add a Cocktail", new_cocktail_path, class: "btn btn-danger btn-lg" %>
+  </div>
+</div>
+
+<div class="col-xs-12 text-center padded margin-fix-bottom"><h2>List of Categories</h2></div>
+
+<div class="container padded">
+   <div class="row">
+     <% @categories.each do |category| %>
+     <div class="col-xs-12 col-sm-4">
+       <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%#= cl_image_path cocktail.photo.path, height: 300, width: 400, crop: :fill %>')">
+         <div class="card-description">
+           <h2><%= category.name %></h2>
+         </div>
+         <%#= link_to category, services_path(category: category), class: "card-link" %>
+       </div>
+     </div>
+     <% end %>
+   </div>
+ </div>

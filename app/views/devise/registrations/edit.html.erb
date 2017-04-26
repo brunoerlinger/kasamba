@@ -4,7 +4,17 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+    <%= f.input :first_name, required: true, autofocus: true %>
+    <%= f.input :last_name, required: true %>
+    <%= f.input :username, required: true %>
+    <%= f.input :email, required: true %>
+    <%= f.input :address, required: true, placeholder: "Street, number" %>
+    <%= f.input :complement, required: false, placeholder: "apt, block, room.." %>
+    <%= f.input :borough, required: true %>
+    <%= f.input :zip_code, required: true %>
+    <%= f.input :city, required: true %>
+    <%= f.input :state, required: true %>
+    <%= f.input :country, as: :string, required: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>

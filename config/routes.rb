@@ -7,4 +7,7 @@ Rails.application.routes.draw do
 
   resources :my_products
 
+  mount Attachinary::Engine => "/attachinary"
+
+
 end

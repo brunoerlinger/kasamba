@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
 
   def index
     @category = Category.find(params[:category])
-    @products = Product.where(category: @category)
+    @products = Product.where(category_id: @category.subtree_ids)
 
     # @services_with_address = @services.joins(:user).where.not("users.latitude is null and users.longitude is null")
 

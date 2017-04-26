@@ -19,7 +19,7 @@ class User < ApplicationRecord
   validates :email, :username, presence: true, uniqueness: true
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
   def self.find_for_facebook_oauth(auth)

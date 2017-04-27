@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
   def index
     @category = Category.find(params[:category])
     @products = Product.where(category_id: @category.subtree_ids)
+    @order_iten = current_order.order_itens.new
 
     # @services_with_address = @services.joins(:user).where.not("users.latitude is null and users.longitude is null")
 
@@ -22,6 +23,7 @@ class ProductsController < ApplicationController
   def show
     # raise
     @product = Product.find(params[:id])
+    @order_iten = current_order.order_itens.new
     # @proposal = @service.proposals.new(user: current_user)
     # @proposal_list = Proposal.where( service_id: @service )
   end

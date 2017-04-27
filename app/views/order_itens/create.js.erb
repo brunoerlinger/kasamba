@@ -1,0 +1,5 @@
+<% if @order.errors.any? || @order_iten.errors.any? %>
+alert("not valid.")
+<% else %>
+  $(".cart-text").html("<%= current_order.order_itens.size %>")
+<% end %>

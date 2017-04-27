@@ -19,6 +19,13 @@
     <% if user_signed_in? %>
 
       <!-- Notification -->
+      <%= link_to orders_show_path, class: "navbar-wagon-item navbar-wagon-link" do %>
+        <div class="badge-container">
+          <i class="fa fa-trash-o"></i>
+          <div class="badge badge-blue cart-text"><%= current_order.order_itens.size %></div>
+        </div>
+      <% end %>
+
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
           <i class="fa fa-envelope-o"></i>

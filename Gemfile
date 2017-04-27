@@ -10,6 +10,7 @@ gem 'devise'
 gem 'redis'
 gem 'ancestry'
 gem 'omniauth-facebook'
+gem "koala"
 
 gem 'sass-rails'
 gem 'jquery-rails'

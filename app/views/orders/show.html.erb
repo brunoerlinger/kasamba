@@ -1,0 +1,18 @@
+<% if !@order_iten.nil? && @order_iten.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+    <% @order_iten.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<% if @order_itens.size == 0 %>
+  <p class="text-center">
+    There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
+  </p>
+<% else %>
+  <% @order_itens.each do |order_item| %>
+    <%= render 'orders/order_row', product: order_iten.product, order_iten: order_iten, show_total: true %>
+  <% end %>
+<% end %>

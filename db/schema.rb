@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170427211729) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,8 +70,10 @@ ActiveRecord::Schema.define(version: 20170427211729) do
   create_table "order_itens", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "unit_price"
+    t.integer  "total_price"
     t.index ["order_id"], name: "index_order_itens_on_order_id", using: :btree
     t.index ["product_id"], name: "index_order_itens_on_product_id", using: :btree
   end
@@ -83,13 +86,15 @@ ActiveRecord::Schema.define(version: 20170427211729) do
     t.integer  "user_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "total"
+    t.integer  "subtotal"
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
-    t.float    "price"
+    t.integer  "price"
     t.string   "address"
     t.float    "longitude"
     t.float    "latitude"

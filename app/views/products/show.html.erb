@@ -4,15 +4,18 @@
       <div class="card-user-service">
         <%= @product.name %>
       </div>
+      
       <div class="card-category-service">
         <%= @product.price %>
       </div>
+      
       <div class="card-description-service">
         <h2><%= @product.description %></h2>
+        <h4>Views: <%= @product.view  %></h4>
       </div>
     </div>
   </div>
-
+  
   <%= simple_form_for([ @product, @question ]) do |form| %>
     <%= form.input :question %>
     <%= form.button :submit %>
@@ -20,10 +23,11 @@
 
   <% @questions.each  do |question| %>
     <%= question.question %>
-   <% if question.answer != nil %>
+    <% if question.answer != nil %>
       <h4><%= question.answer %></h4>
     <% end %>
   <% end %>
 
 </div>
+
 

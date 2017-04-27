@@ -8,11 +8,13 @@ class ProductsController < ApplicationController
   def index
     @category = Category.find(params[:category])
     @products = Product.where(category_id: @category.subtree_ids)
-
+    @hash = Gmaps4rails.build_markers(@products) do |product, marker|
+      marker.lat product.latitude
+      marker.lng product.longitude
+      marker.infowindow render_to_string(partial: "/mine/products/map_box_index", locals: { my_product: product })
+    end
     # @services_with_address = @services.joins(:user).where.not("users.latitude is null and users.longitude is null")
-
     # @users = @services.map(&:user)
-
     # @hash = Gmaps4rails.build_markers(@services_with_address) do |service, marker|
     #   marker.lat service.user.latitude
     #   marker.lng service.user.longitude
@@ -21,7 +23,11 @@ class ProductsController < ApplicationController
 
   def show
     # raise
+
     @product = Product.find(params[:id])
+    @product.view = @product.view + 1
+    @product.save
+
     # @proposal = @service.proposals.new(user: current_user)
     # @proposal_list = Proposal.where( service_id: @service )
   end

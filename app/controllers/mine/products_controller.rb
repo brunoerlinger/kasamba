@@ -26,6 +26,7 @@ class Mine::ProductsController < ApplicationController
   def new
     @my_product = Product.new
     @my_product.address = current_user.address
+    @categories = Category.all
   end
 
   def create

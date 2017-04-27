@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root to: 'products#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  resources :products, only: [ :home, :show, :index ]
+
   namespace :mine do
     resources :products
   end

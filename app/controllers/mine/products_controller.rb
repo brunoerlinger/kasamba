@@ -59,6 +59,6 @@ private
   def my_product_params
       # *Strong params*: You need to *whitelist* what can be updated by the user
       # Never trust user data!
-      params.require(:product).permit(:name, :description, :address, :price, photos: [])
+      params.require(:product).permit(:name, :description, :address, :price, :category_id, photos: [])
   end
 end

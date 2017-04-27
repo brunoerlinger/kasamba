@@ -22,10 +22,14 @@ class Mine::ProductsController < ApplicationController
       # add here whatever html content you desire, it will be displayed when users clicks on the marker
   end
 
+  def gmaps4rails_title
+      # add here whatever text you desire
+  end
 
   def new
     @my_product = Product.new
     @my_product.address = current_user.address
+    @my_product.view = 0
     @categories = Category.all
   end
 
@@ -41,6 +45,7 @@ class Mine::ProductsController < ApplicationController
 
   def edit
     @my_product = Product.find(params[:id])
+    @categories = Category.all
   end
 
   def update

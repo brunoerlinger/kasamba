@@ -13,22 +13,20 @@ class ProductsController < ApplicationController
       marker.lng product.longitude
       marker.infowindow render_to_string(partial: "/mine/products/map_box_index", locals: { my_product: product })
     end
-    # @services_with_address = @services.joins(:user).where.not("users.latitude is null and users.longitude is null")
-    # @users = @services.map(&:user)
-    # @hash = Gmaps4rails.build_markers(@services_with_address) do |service, marker|
-    #   marker.lat service.user.latitude
-    #   marker.lng service.user.longitude
-      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
   end
 
   def show
-    # raise
-
+    lat1 = current_user.latitude
+    lon1 = current_user.longitude
     @product = Product.find(params[:id])
-    @product.view = @product.view + 1
+    if @product.view.blank?
+      @product.view = 1
+    else
+      @product.view = @product.view += 1
+    end
     @product.save
-
-    # @proposal = @service.proposals.new(user: current_user)
-    # @proposal_list = Proposal.where( service_id: @service )
+    lat2 = @product.latitude
+    lon2 = @product.longitude
+    @distance = Geocoder::Calculations.distance_between([lat1,lon1], [lat2,lon2])
   end
 end

@@ -14,6 +14,9 @@ class User < ApplicationRecord
   # has_many :chats, through: :products
   # has_many :messages, through: :chats
 
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   validates :address, :city, :zip_code, :country, :state, :borough, presence: true
   validates :first_name, :last_name, presence: true
   validates :username, presence: true, uniqueness: true

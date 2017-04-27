@@ -8,13 +8,12 @@ Rails.application.routes.draw do
   resources :products, only: [ :home, :show, :index ]
 
   namespace :mine do
-    resources :products do
-      resources :questions
-    end
+    resources :products
+    resources :answers, only: [ :update ]
   end
 
   resources :products do
-    resources :questions
+    resources :questions, only: [ :create, :destroy]
   end
 
 

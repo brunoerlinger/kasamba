@@ -8,6 +8,16 @@ class ProductsController < ApplicationController
   def index
     @category = Category.find(params[:category])
     @products = Product.where(category_id: @category.subtree_ids)
+
+  end
+
+  def show
+    @product = Product.find(params[:id])
+    @question = Question.new
+    @questions = @product.questions
+    
+    @product.view = @product.view + 1
+    @product.save
     @hash = Gmaps4rails.build_markers(@products) do |product, marker|
       marker.lat product.latitude
       marker.lng product.longitude
@@ -19,16 +29,5 @@ class ProductsController < ApplicationController
     #   marker.lat service.user.latitude
     #   marker.lng service.user.longitude
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
-  end
-
-  def show
-    # raise
-
-    @product = Product.find(params[:id])
-    @product.view = @product.view + 1
-    @product.save
-
-    # @proposal = @service.proposals.new(user: current_user)
-    # @proposal_list = Proposal.where( service_id: @service )
   end
 end

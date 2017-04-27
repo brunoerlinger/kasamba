@@ -1,0 +1,16 @@
+<div class = "container">
+  <% @questions.each  do |question| %>
+    <h2><%= question.user.first_name %></h2>
+    <%= question.question %>
+
+    <% if question.answer.nil? %>
+      <%= simple_form_for(question, url: mine_answer_path(question)) do |form| %>
+        <%= form.input :answer %>
+        <%= form.button :submit %>
+      <% end %>
+    <% else %>
+        <h4><%= question.answer %></h4>
+    <% end %>
+
+  <% end %>
+</div>

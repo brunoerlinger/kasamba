@@ -10,21 +10,25 @@ class ProductsController < ApplicationController
     @products = Product.where(category_id: @category.subtree_ids)
     @order_iten = current_order.order_itens.new
 
+  end
+
+  def show
+    @product = Product.find(params[:id])
+    @question = Question.new
+    @questions = @product.questions
+    @order_iten = current_order.order_itens.new
+    
+    @product.view = @product.view + 1
+    @product.save
+    @hash = Gmaps4rails.build_markers(@products) do |product, marker|
+      marker.lat product.latitude
+      marker.lng product.longitude
+      marker.infowindow render_to_string(partial: "/mine/products/map_box_index", locals: { my_product: product })
+    end
     # @services_with_address = @services.joins(:user).where.not("users.latitude is null and users.longitude is null")
-
     # @users = @services.map(&:user)
-
     # @hash = Gmaps4rails.build_markers(@services_with_address) do |service, marker|
     #   marker.lat service.user.latitude
     #   marker.lng service.user.longitude
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
-  end
-
-  def show
-    # raise
-    @product = Product.find(params[:id])
-    @order_iten = current_order.order_itens.new
-    # @proposal = @service.proposals.new(user: current_user)
-    # @proposal_list = Proposal.where( service_id: @service )
-  end
 end

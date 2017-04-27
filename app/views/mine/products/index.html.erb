@@ -1,32 +1,38 @@
-#INDEX | My_product
-
-<div class=>
-<% @my_products.each do |product|  %>
-  <h3><%= link_to product.name, mine_product_path(product) %></h3>
+<div class="container">
+  <h2> Meus Produtos</h2>
+  <hr>
+  <% @my_products.each do |product|  %>
+    <h3><%= link_to product.name, mine_product_path(product) %></h3>
   <% end %>
+  <br>
+
+  <%= link_to 'Crie um novo produto', new_mine_product_path, class: "button-index btn btn-primary" %>
+
+  <%#= link_to "Ir para os Produtos", products_path, class: "button-index btn btn-warning" %>
+  <br>
+  <br>
+
+  <div id="map" style="width: 100%; height: 500px;">
+    <% content_for(:after_js) do %>
+      <%= javascript_tag do %>
+        $(document).ready(function() {
+          var handler = Gmaps.build('Google');
+          handler.buildMap({ internal: { id: 'map' } }, function() {
+            markers = handler.addMarkers(<%= raw @hash.to_json %>);
+            handler.bounds.extendWith(markers);
+            handler.fitMapToBounds();
+            if (markers.length == 0) {
+              handler.getMap().setZoom(2);
+            } else if (markers.length == 1) {
+              handler.getMap().setZoom(14);
+            }
+          });
+        });
+      <% end %>
+    <% end %>
+  </div>
+
+  <br>
+  <br>
 </div>
 
-
-<%= link_to 'Crie um novo produto', new_mine_product_path, class:"btn btn-primary" %>
-
-
-
-<div id="map" style="width: 100%; height: 600px;"></div>
-
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
-    });
-  <% end %>
-<% end %>

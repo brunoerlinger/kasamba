@@ -6,6 +6,7 @@ class Product < ApplicationRecord
 
   belongs_to :user
   belongs_to :category
+  has_many :questions
 
   validates :name, :description, :price, :address , presence: :true
 

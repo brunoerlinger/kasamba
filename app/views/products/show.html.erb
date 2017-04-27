@@ -1,18 +1,33 @@
-
 <div class="container">
-    <div class="col-xs-12 col-sm-4">
-      <div class="card-serv" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%#= cl_image_path background_url(@service), height: 300, width: 400, crop: :fill %>')">
+  <div class="col-xs-12 col-sm-4">
+    <div class="card-serv" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%#= cl_image_path background_url(@service), height: 300, width: 400, crop: :fill %>')">
       <div class="card-user-service">
         <%= @product.name %>
       </div>
+      
       <div class="card-category-service">
         <%= @product.price %>
       </div>
-       <div class="card-description-service">
+      
+      <div class="card-description-service">
         <h2><%= @product.description %></h2>
-        </div>
+        <h4>Views: <%= @product.view  %></h4>
       </div>
     </div>
+  </div>
+  
+  <%= simple_form_for([ @product, @question ]) do |form| %>
+    <%= form.input :question %>
+    <%= form.button :submit %>
+  <% end %>
+
+  <% @questions.each  do |question| %>
+    <%= question.question %>
+    <% if question.answer != nil %>
+      <h4><%= question.answer %></h4>
+    <% end %>
+  <% end %>
+
 </div>
 
 <div class="well">

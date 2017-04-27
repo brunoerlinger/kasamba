@@ -11,6 +11,7 @@ class Mine::ProductsController < ApplicationController
 
   def show
     @my_product = Product.find(params[:id])
+    @questions = @my_product.questions
     @hash = Gmaps4rails.build_markers(@my_product) do |product, marker|
       marker.lat product.latitude
       marker.lng product.longitude
@@ -18,14 +19,10 @@ class Mine::ProductsController < ApplicationController
     end
   end
 
-  def gmaps4rails_infowindow
-      # add here whatever html content you desire, it will be displayed when users clicks on the marker
-  end
-
-
   def new
     @my_product = Product.new
     @my_product.address = current_user.address
+    @categories = Category.all
   end
 
   def create
@@ -54,6 +51,9 @@ class Mine::ProductsController < ApplicationController
     redirect_to mine_products_path
   end
 
+  def gmaps4rails_infowindow
+      # add here whatever html content you desire, it will be displayed when users clicks on the marker
+  end
 
 private
   def my_product_params

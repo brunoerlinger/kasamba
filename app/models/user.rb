@@ -14,8 +14,8 @@ class User < ApplicationRecord
   # has_many :chats, through: :products
   # has_many :messages, through: :chats
 
-  validates :first_name, :last_name, :address, :city, :zip_code, presence: true
-  validates :country, presence: true
+  validates :address, :city, :zip_code, :country, :state, :borough, presence: true
+  validates :first_name, :last_name, presence: true
   validates :username, presence: true, uniqueness: true
 
   devise :database_authenticatable, :registerable,
@@ -52,4 +52,10 @@ class User < ApplicationRecord
       end
     end
   end
+
+  #  def self.koala(auth)
+  #   access_token = auth['token']
+  #   facebook = Koala::Facebook::API.new(access_token)
+  #   facebook.get_object("me?fields=name,picture")
+  # end
 end

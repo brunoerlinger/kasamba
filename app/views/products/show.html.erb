@@ -1,6 +1,11 @@
 <div class="container">
+
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))')">
+
   <div class="col-xs-12 col-sm-4">
     <div class="card-serv" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%#= cl_image_path background_url(@service), height: 300, width: 400, crop: :fill %>')">
+
       <div class="card-user-service">
         <%= @product.name %>
       </div>
@@ -11,7 +16,7 @@
       
       <div class="card-description-service">
         <h2><%= @product.description %></h2>
-        <h4>Views: <%= @product.view  %></h4>
+        <h6>Views: <%= @product.view  %></h6>
       </div>
     </div>
   </div>
@@ -30,7 +35,13 @@
 
 </div>
 
+<%= @distance%>
+
+
+
+
 <div class="well">
+
 
   <div class="row">
     <div class="col-xs-4">

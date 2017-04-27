@@ -22,6 +22,7 @@ class Mine::ProductsController < ApplicationController
   def new
     @my_product = Product.new
     @my_product.address = current_user.address
+    @my_product.view = 0
     @categories = Category.all
   end
 
@@ -37,6 +38,7 @@ class Mine::ProductsController < ApplicationController
 
   def edit
     @my_product = Product.find(params[:id])
+    @categories = Category.all
   end
 
   def update

@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
   def index
     @category = Category.find(params[:category])
     @products = Product.where(category_id: @category.subtree_ids)
+    @order_iten = current_order.order_itens.new
 
   end
 
@@ -15,6 +16,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @question = Question.new
     @questions = @product.questions
+    @order_iten = current_order.order_itens.new
     
     @product.view = @product.view + 1
     @product.save
@@ -29,5 +31,4 @@ class ProductsController < ApplicationController
     #   marker.lat service.user.latitude
     #   marker.lng service.user.longitude
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
-  end
 end

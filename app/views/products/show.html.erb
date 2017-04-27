@@ -30,4 +30,20 @@
 
 </div>
 
+<div class="well">
 
+  <div class="row">
+    <div class="col-xs-4">
+
+      <%= form_for @order_iten, remote: true do |f| %>
+      <h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency @product.price %></span></h4>
+        <div class="input-group">
+          <div class="input-group-btn">
+            <%= f.hidden_field :product_id, value: @product.id %>
+            <%= f.submit "Add to Kasamba", class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

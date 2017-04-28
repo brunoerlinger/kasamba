@@ -103,6 +103,10 @@ cama = Category.create(name: "Lençol", parent: tecidos)
 cobertor = Category.create(name: "Cobertor", parent: tecidos)
 tapete = Category.create(name: "Tapete", parent: tecidos)
 
+moveis = Category.create(name: "Móveis")
+
+sofa = Category.create(name: "Sofá", parent: moveis)
+
 
 papel = Category.create(name: "Papel")
 
@@ -113,4 +117,6 @@ caixa = Category.create(name: "Caixa de Papelão", parent: papel)
 
 pneus = Category.create(name: "Pneus Inservíveis")
 
+pneu_bicicleta = Category.create(name: "Pneu de Bicicleta", parent: pneus)
+pneu_carro = Category.create(name: "Pneu de Automóvel", parent: pneus)
 

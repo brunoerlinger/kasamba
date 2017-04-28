@@ -7,12 +7,8 @@
     </ul>
   </div>
 <% end %>
-<% if @order_itens.size == 0 %>
-  <p class="text-center">
-    There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
-  </p>
-<% else %>
-  <% @order_itens.each do |order_item| %>
-    <%= render 'orders/order_row', product: order_iten.product, order_iten: order_iten, show_total: true %>
-  <% end %>
-<% end %>
+<div class="container order-kasamba padded">
+
+  <%= render 'order_list' %>
+<div class="padded text-right"><%= link_to 'Finalizar', root_path, class: "text-right btn btn-primary" %></div>
+</div>

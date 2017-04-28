@@ -23,7 +23,7 @@ class Mine::ProductsController < ApplicationController
     @my_product = Product.new
     @my_product.address = current_user.address
     @my_product.view = 0
-    @categories = Category.all
+    @categories = Category.roots
   end
 
   def create

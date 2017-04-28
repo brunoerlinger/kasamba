@@ -2,19 +2,21 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
-    @categories = Category.children_of(1)
+    @categories = Category.roots
   end
 
   def index
+    @categories = Category.roots
     @category = Category.find(params[:category])
     @products = Product.where(category_id: @category.subtree_ids)
     @order_iten = current_order.order_itens.new
-
+    gmaps
+    @products.each do |product|
+      distance(product)
+    end
   end
 
   def show
-    lat1 = current_user.latitude
-    lon1 = current_user.longitude
     @product = Product.find(params[:id])
     @question = Question.new
     @questions = @product.questions
@@ -25,10 +27,11 @@ class ProductsController < ApplicationController
       @product.view = @product.view += 1
     end
     @product.save
-    lat2 = @product.latitude
-    lon2 = @product.longitude
-    @distance = Geocoder::Calculations.distance_between([lat1,lon1], [lat2,lon2])
-    @hash = Gmaps4rails.build_markers(@products) do |product, marker|
+    gmaps
+  end
+
+  def gmaps
+      @hash = Gmaps4rails.build_markers(@products) do |product, marker|
       marker.lat product.latitude
       marker.lng product.longitude
       marker.infowindow render_to_string(partial: "/mine/products/map_box_index", locals: { my_product: product })

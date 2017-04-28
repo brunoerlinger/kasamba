@@ -11,9 +11,6 @@ class ProductsController < ApplicationController
     @products = Product.where(category_id: @category.subtree_ids)
     @order_iten = current_order.order_itens.new
     gmaps
-    @products.each do |product|
-      distance(product)
-    end
   end
 
   def show

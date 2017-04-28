@@ -1,26 +1,155 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('');">
-  <div class="banner-content">
+  <div class="text-center banner-content">
     <h1>Kasamba</h1>
     <p>Making waste useful</p>
-    <%#= link_to "Add a Cocktail", new_cocktail_path, class: "btn btn-danger btn-lg" %>
+
+    <script type="text/javascript">
+      var data = [{ id: 0, text: 'enhancement' }, { id: 1, text: 'bug' }, { id: 2, text: 'duplicate' }, { id: 3, text: 'invalid' }, { id: 4, text: 'wontfix' }];
+      $(".js-example-theme-single").select2({
+        theme: "classic"
+        minimumResultsForSearch: 20
+      });
+
+      // $('select').select2({
+      //   ajax: {
+      //     url: function (params) {
+      //     return 'products/index' + params[:category];
+      //     }
+      //   }
+      // });
+    </script>
+
+    <select class=".js-example-theme-single" id="select" style="width: 70%">
+
+      <option></option>
+      <option disabled="disabled">Eletrodómesticos </option>
+      <option value="3620194" selected="selected">Aspirador</option>
+      <option value="3620194" selected="selected">Batedeira</option>
+      <option value="3620194" selected="selected">Chapinha</option>
+      <option value="3620194" selected="selected">Enceradeira</option>
+      <option value="3620194" selected="selected">Ferramenta</option>
+      <option value="3620194" selected="selected">Fogao</option>
+      <option value="3620194" selected="selected">Forno microondas</option>
+      <option value="3620194" selected="selected">Freezer</option>
+      <option value="3620194" selected="selected">Geladeira</option>
+      <option value="3620194" selected="selected">Liquidificador</option>
+      <option value="3620194" selected="selected">Maquina de lavar louça</option>
+      <option value="3620194" selected="selected">Maquina de lavar roupa</option>
+      <option value="3620194" selected="selected">Mixer</option>
+      <option value="3620194" selected="selected">secadora </option>
+      <option value="3620194" selected="selected">Secador de Cabelo</option>
+      <option value="3620194" selected="selected">Torradeira</option>
+
+      <option><br></option>
+
+      <option disabled="disabled">Eletronicos</option>
+      <option value="3620194" selected="selected">Câmera</option>
+      <option value="3620194" selected="selected">Celular</option>
+      <option value="3620194" selected="selected">Dvd</option>
+      <option value="3620194" selected="selected">Fixo</option>
+      <option value="3620194" selected="selected">Impressora</option>
+      <option value="3620194" selected="selected">Notebook</option>
+      <option value="3620194" selected="selected">PC</option>
+      <option value="3620194" selected="selected">Rádio</option>
+      <option value="3620194" selected="selected">Roteador Wifi</option>
+      <option value="3620194" selected="selected">Tablet</option>
+      <option value="3620194" selected="selected">Televisor</option>
+      <option value="3620194" selected="selected">Videocassete</option>
+
+      <option><br></option>
+
+      <option disabled="disabled">Lâmpadas</option>
+      <option value="3620194" selected="selected">Incandescente </option>
+      <option value="3620194" selected="selected">Fluorescente</option>
+
+      <option><br></option>
+
+      <option disabled="disabled">Madeira</option>
+      <option value="3620194" selected="selected">Armário</option>
+      <option value="3620194" selected="selected">Banco</option>
+      <option value="3620194" selected="selected">Cristaleira</option>
+      <option value="3620194" selected="selected">Gabinete</option>
+      <option value="3620194" selected="selected">Mesa</option>
+      <option value="3620194" selected="selected">Moldura</option>
+      <option value="3620194" selected="selected">Gabinete</option>
+      <option value="3620194" selected="selected">Pallet</option>
+      <option value="3620194" selected="selected">Pedaco de Madeira</option>
+
+      <option><br></option>
+
+      <option disabled="disabled">Plástico</option>
+      <option value="3620194" selected="selected">Garrafa Plástico </option>
+      <option value="3620194" selected="selected">Sacola de Plaástico </option>
+      <option value="3620194" selected="selected">Pote Plástico </option>
+      <option value="3620194" selected="selected">Brinquedo</option>
+
+      <option><br></option>
+
+      <option disabled="disabled">Vidro</option>
+      <option value="3620194" selected="selected">Copo</option>
+      <option value="3620194" selected="selected">Decoração</option>
+      <option value="3620194" selected="selected">Espelho</option>
+      <option value="3620194" selected="selected">Garrafa de Vidro</option>
+      <option value="3620194" selected="selected">Janela</option>
+      <option value="3620194" selected="selected">Cacos</option>
+      <option value="3620194" selected="selected">Pote</option>
+
+      <option><br></option>
+
+      <option disabled="disabled">Metal</option>
+      <option value="3620194" selected="selected">Barra</option>
+      <option value="3620194" selected="selected">Copo</option>
+      <option value="3620194" selected="selected">Decoracao</option>
+      <option value="3620194" selected="selected">Ferramenta</option>
+      <option value="3620194" selected="selected">Fios</option>
+      <option value="3620194" selected="selected">Garrafa</option>
+      <option value="3620194" selected="selected">Lata de tinta</option>
+      <option value="3620194" selected="selected">Pote</option>
+      <option value="3620194" selected="selected">Tubos</option>
+
+      <option><br></option>
+
+      <option disabled="disabled">Tecidos</option>
+      <option value="3620194" selected="selected">Banho</option>
+      <option value="3620194" selected="selected">Cama</option>
+      <option value="3620194" selected="selected">Cobertor</option>
+      <option value="3620194" selected="selected">Cortina</option>
+      <option value="3620194" selected="selected">Retalho</option>
+      <option value="3620194" selected="selected">Roupas</option>
+      <option value="3620194" selected="selected">Tapete</option>
+
+      <option><br></option>
+
+      <option disabled="disabled">Papel</option>
+      <option value="3620194" selected="selected">Caixa</option>
+      <option value="3620194" selected="selected">Livro</option>
+      <option value="3620194" selected="selected">Pedaço</option>
+      <option value="3620194" selected="selected">Revista</option>
+
+      <option><br></option>
+
+      <option disabled="disabled">Borracha</option>
+      <option value="3620194" selected="selected">pneus</option>
+      <option><br></option>
+    </select>
+  </label>
   </div>
 </div>
 
 <div class="col-xs-12 text-center padded margin-fix-bottom"><h2>List of Categories</h2></div>
-
-<div class="container padded">
-   <div class="row">
-     <% @categories.each do |category| %>
-     <div class="col-xs-12 col-sm-4">
-       <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%#= cl_image_path cocktail.photo.path, height: 300, width: 400, crop: :fill %>')">
-         <div class="card-description">
+  <div class="container padded">
+    <div class="row">
+      <% @categories.each do |category| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%#= cl_image_path cocktail.photo.path, height: 300, width: 400, crop: :fill %>')">
+          <div class="card-description">
            <h2><%= category.name %></h2>
-         </div>
+          </div>
          <%= link_to category, products_path(category: category), class: "card-link" %>
-       </div>
-     </div>
-     <% end %>
-   </div>
- </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 

@@ -10,20 +10,20 @@
         minimumResultsForSearch: 20
       });
 
-      // $('select').select2({
-      //   ajax: {
-      //     url: function (params) {
-      //     return 'products/index' + params[:category];
-      //     }
-      //   }
-      // });
+      $('.select').select2({
+        ajax: {
+          url: function (params) {
+          return 'products/index' + (category: products.category);
+          }
+        }
+      });
     </script>
 
-    <select class=".js-example-theme-single" id="select" style="width: 70%">
+    <select class=".js-example-theme-single select" style="width: 70%">
 
       <option></option>
       <option disabled="disabled">Eletrodómesticos </option>
-      <option value="3620194" selected="selected">Aspirador</option>
+      <option value="https://www.yahoo.com/" selected >Aspirador</option>
       <option value="3620194" selected="selected">Batedeira</option>
       <option value="3620194" selected="selected">Chapinha</option>
       <option value="3620194" selected="selected">Enceradeira</option>

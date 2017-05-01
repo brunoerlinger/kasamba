@@ -11,6 +11,7 @@ gem 'redis'
 gem 'ancestry'
 gem 'omniauth-facebook'
 gem "koala"
+gem 'friendly_id', '~> 5.1.0'
 
 gem 'sass-rails'
 gem 'jquery-rails'

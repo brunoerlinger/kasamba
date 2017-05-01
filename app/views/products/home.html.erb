@@ -4,7 +4,7 @@
       <div class="text-center banner-content container">
         <h1><strong>KASAMBA<strong></h1>
         <p>Lixo não precisa ser Lixo</p>
-        <%= select_tag "category", options_for_select(Category.all.map{|c| [c.name, "/products?category=#{c.id}"] }), id: "selectbox_categories", style: "width: 700px;", prompt: "Escolha uma categoria"%>
+        <%= select_tag "category", options_for_select(@categories.map{|c| [c.name, "/products?category=#{c.id}"] }), id: "selectbox_categories", style: "width: 700px;", prompt: "Escolha uma categoria"%>
       </div>
     </div>
   </div>

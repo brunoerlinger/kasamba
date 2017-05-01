@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
-    @categories = Category.roots
+    @categories = Category.all
   end
 
   def index

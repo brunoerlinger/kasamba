@@ -1,5 +1,6 @@
 .avatar {
-  width: 30px;
+  height: 45px;
+  width: 45px;
   border-radius: 50%;
 }
 .avatar-large {
@@ -19,7 +20,8 @@
   border: white 1px solid;
 }
 
-#navbar-avatar {
-  height: 45px !important;
-  width: 45px !important;
+.avatar-product{
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
 }

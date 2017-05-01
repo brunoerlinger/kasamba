@@ -6,9 +6,12 @@
     <%= f.input :category_id, collection: @categories , as: :grouped_select, group_method: :children %>
     <%= f.input :price %>
     <%= f.input :address %>
+    <%= f.input :city %>
+    <%= f.input :state %>
+    <%= f.input :zip_code %>
     <%= f.input :photos, as: :attachinary %>
     <br>
-    <%= f.submit "Gravar", class: "btn btn-primary" %>
+    <%= f.submit "Kasambar", class: "btn btn-primary" %>
   <% end %>
 </div>
 

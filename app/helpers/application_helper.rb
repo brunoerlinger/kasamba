@@ -9,5 +9,9 @@ module ApplicationHelper
       "http://placehold.it/30x30"
     end
   end
+
+  # def background_url(my_service)
+  #   my_service.photos.sample.try(:path) || "http://placehold.it/30x30"
+  # end
 end
 

@@ -1,0 +1,16 @@
+<% if @order_itens.size == 0 %>
+  <h3 class="text-center">
+    There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your kasamba.
+  </h3>
+<% else %>
+<div><h3>  Você está retirando <strong><%= current_order.order_itens.size %></strong> resíduo(s) de outra(s) <strong>Kasamba(s)</strong>:</h3></div>
+<br>
+<div>
+  <% @order_itens.each do |order_iten| %>
+    <%= render 'orders/order_row', product: order_iten.product, order_iten: order_iten, show_total: true %>
+  <% end %>
+  </div>
+  <br>
+<div class="text-right"><h3>  Total: <strong><%= number_to_currency current_order.subtotal %></strong></h3></div>
+<% end %>
+

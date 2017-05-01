@@ -3,12 +3,12 @@ class Order < ApplicationRecord
   has_many :order_itens
   before_save :update_subtotal
 
-  validates :order_iten, :user, presence:true
-  validates :card_number, :security_name, presence: true, uniqueness: true
-  validates :card_name, :card_expiration, presence: true
+  validates :user, presence:true
+  # validates :card_number, :security_number, presence: true, uniqueness: true
+  # validates :card_name, :card_expiration, presence: true
 
   def subtotal
-    order_itens.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
+    order_itens.collect { |oi| oi.valid? ? oi.unit_price : 0 }.sum
   end
 
   private

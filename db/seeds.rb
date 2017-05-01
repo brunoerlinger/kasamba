@@ -6,9 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-residuos = Category.create(name: "Resíduos")
-
-domesticos = Category.create(name: "Eletrodomésticos", parent: residuos)
+domesticos = Category.create(name: "Eletrodomésticos")
 
 fogao = Category.create(name: "Fogão", parent: domesticos)
 geladeira = Category.create(name: "Geladeira", parent: domesticos)
@@ -27,7 +25,7 @@ maquina_de_lavar_louca = Category.create(name: "Máquina de lavar louça", paren
 secadora = Category.create(name: "Secadora", parent: domesticos)
 ferramenta = Category.create(name: "Ferramenta Elétrica", parent: domesticos)
 
-eletros = Category.create(name: "Eletrônicos", parent: residuos)
+eletros = Category.create(name: "Eletrônicos")
 
 camera = Category.create(name: "Câmera Fotográfica", parent: eletros)
 roteador_wifi = Category.create(name: "Roteador Wifi", parent: eletros)
@@ -43,12 +41,12 @@ fixo = Category.create(name: "Telefone Fixo", parent: eletros)
 celular = Category.create(name: "Telefone Celular", parent: eletros)
 tablet = Category.create(name: "Tablet", parent: eletros)
 
-lampadas = Category.create(name: "Lâmpadas", parent: residuos)
+lampadas = Category.create(name: "Lâmpadas")
 
 fluorescente = Category.create(name: "Lâmpada Fluorescente", parent: lampadas)
 incandescente = Category.create(name: "Lâmpada Incandescente", parent: lampadas)
 
-madeira = Category.create(name: "Madeira", parent: residuos)
+madeira = Category.create(name: "Madeira")
 
 pallet = Category.create(name: "Palete", parent: madeira)
 guarda_roupa = Category.create(name: "Guarda-Roupa", parent: madeira)
@@ -61,7 +59,7 @@ pedaco_madeira = Category.create(name: "Pedaços de Madeira", parent: madeira)
 moldura = Category.create(name: "Moldura", parent: madeira)
 
 
-plastico = Category.create(name: "Plástico", parent: residuos)
+plastico = Category.create(name: "Plástico")
 
 garrafa_plastico = Category.create(name: "Garrafa Plástica", parent: plastico)
 sacola_plastico = Category.create(name: "Sacos/Sacola Plástica", parent: plastico)
@@ -72,7 +70,7 @@ limpeza = Category.create(name: "Embalagem Plástica de Produto de Limpeza", par
 pedaco_plastico = Category.create(name: "Pedaços de Plástico", parent: plastico)
 
 
-vidro = Category.create(name: "Vidro", parent: residuos)
+vidro = Category.create(name: "Vidro")
 
 garrafa_vidro = Category.create(name: "Garrafa de Vidro", parent: vidro)
 pote_vidro = Category.create(name: "Pote/Recipiente de Vidro", parent: vidro)
@@ -82,7 +80,7 @@ espelho = Category.create(name: "Espelho", parent: vidro)
 pedaco_vidro = Category.create(name: "Pedaços de Vidro", parent: vidro)
 janela_vidro = Category.create(name: "Janela", parent: vidro)
 
-metal = Category.create(name: "Metal", parent: residuos)
+metal = Category.create(name: "Metal")
 
 garrafa_metal = Category.create(name: "Garrafa de Metal", parent: metal)
 pote_metal = Category.create(name: "Pote/Recipiente de Metal", parent: metal)
@@ -95,7 +93,7 @@ pedaco_metal = Category.create(name: "Pedaços de Metal", parent: metal)
 fio = Category.create(name: "Fio de Metal", parent: metal)
 ferramenta = Category.create(name: "Ferramenta de Metal", parent: metal)
 
-tecidos = Category.create(name: "Tecido", parent: residuos)
+tecidos = Category.create(name: "Tecido")
 
 retalho = Category.create(name: "Retalhos de Tecido", parent: tecidos)
 roupas = Category.create(name: "Roupa", parent: tecidos)
@@ -105,14 +103,20 @@ cama = Category.create(name: "Lençol", parent: tecidos)
 cobertor = Category.create(name: "Cobertor", parent: tecidos)
 tapete = Category.create(name: "Tapete", parent: tecidos)
 
+moveis = Category.create(name: "Móveis")
 
-papel = Category.create(name: "Papel", parent: residuos)
+sofa = Category.create(name: "Sofá", parent: moveis)
+
+
+papel = Category.create(name: "Papel")
 
 garrafa_papel = Category.create(name: "Tetrapak/Garrafa de Papelão", parent: papel)
 pedaco_papel = Category.create(name: "Pedaços de Papel", parent: papel)
 livro = Category.create(name: "Livro/Apostila", parent: papel)
 caixa = Category.create(name: "Caixa de Papelão", parent: papel)
 
-pneus = Category.create(name: "Pneus Inservíveis", parent: residuos)
+pneus = Category.create(name: "Pneus Inservíveis")
 
+pneu_bicicleta = Category.create(name: "Pneu de Bicicleta", parent: pneus)
+pneu_carro = Category.create(name: "Pneu de Automóvel", parent: pneus)
 

@@ -8,6 +8,6 @@ class Product < ApplicationRecord
   belongs_to :category
   has_many :questions
 
-  validates :name, :description, :price, :address , presence: :true
+  validates :name, :description, :price, :category_id, :address , presence: :true
 
 end

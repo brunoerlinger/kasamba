@@ -2,9 +2,10 @@ class OrderIten < ApplicationRecord
   belongs_to :order
   belongs_to :product
 
-  validates :product, :order, presence:true
+  validates :product, presence:true
   validate :product_present
   validate :order_present
+  validates :order, presence: true, uniqueness: { scope: :product}
 
   before_save :finalize
 

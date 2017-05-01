@@ -3,7 +3,7 @@ class OrderItensController < ApplicationController
     @order = current_order
     @order_iten = @order.order_itens.new(order_iten_params)
     @order.save
-    # session[:order_id] = @order.id
+    session[:order_id] = @order.id
   end
 
   # def edit

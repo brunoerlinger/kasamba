@@ -23,7 +23,7 @@ class Mine::ProductsController < ApplicationController
     @my_product = Product.new
     @my_product.address = current_user.address
     @my_product.view = 0
-    @categories = Category.roots
+    @categories = Category.all
   end
 
   def create
@@ -43,8 +43,12 @@ class Mine::ProductsController < ApplicationController
 
   def update
     @my_product = Product.find(params[:id])
-    @my_product.update(my_product_params)
-    redirect_to mine_product_path(@my_product)
+    if @my_product.update(my_product_params)
+      redirect_to mine_product_path(@my_product)
+    else
+      @categories = Category.all
+      render :edit
+    end
   end
 
   def destroy
@@ -61,6 +65,6 @@ private
   def my_product_params
       # *Strong params*: You need to *whitelist* what can be updated by the user
       # Never trust user data!
-      params.require(:product).permit(:name, :description, :address, :price, :category_id, photos: [])
+      params.require(:product).permit(:name, :description, :address, :state, :city, :zip_code, :price, :category_id, photos: [])
   end
 end

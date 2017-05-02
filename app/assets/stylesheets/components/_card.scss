@@ -1,3 +1,4 @@
+
 .card
 {
     width: 100%;
@@ -11,10 +12,29 @@
     color: black;
 }
 
-.link-to-text-colors
-{
-    color: red;
+.card-product {
+  min-height: 439px;
+  width: 300px;
+  margin-bottom: 43px;
+  margin-top: 45px;
+  border-radius: 7px;
+  background-color: white;
+  box-shadow: 0 8px 5px rgba(0, 0, 0, 0.4);
+  padding-bottom: 13px;
 }
+
+.card-avatar-product-user {
+  position: relative;
+  top: 55px;
+  text-align: center;
+}
+
+.card-product-user{
+  font-size: 20px;
+  margin-top: 66px;
+  text-align: center;
+}
+
 
 .startup {
   font-size: 13px;
@@ -66,3 +86,36 @@
 // .card-link:hover{
 //   opacity: 0.1;
 // }
+.card-button{
+  border-radius: 10px;
+}
+
+// .card-description{
+//   margin-bottom: 75px;
+//   margin-left: 22px;
+//   text-align: center;
+// }
+
+.card-description{
+  margin-left: 16px;
+  margin-top: 20px;
+  text-align: center;
+  word-wrap: break-word;
+  padding-right: 5px;
+}
+
+.card-user-product{
+  margin-top: 20px;
+  font-size: 30px;
+  margin-left: 10px;
+  text-align: center;
+}
+
+.card-category{
+  margin-left: 16px;
+  margin-bottom: 21px;
+  margin-top: 39px;
+  font-size: 10px;
+  text-align: center;
+}
+

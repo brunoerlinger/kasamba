@@ -11,20 +11,17 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :first_name, required: false, autofocus: true, hint: "Leave it blank, if you don't want to change it" %>
-    <%= f.input :last_name, required: false, hint: "Leave it blank, if you don't want to change it" %>
-    <%= f.input :username, required: false, hint: "Leave it blank, if you don't want to change it" %>
-    <%= f.input :email, required: false, hint: "Leave it blank, if you don't want to change it" %>
+    <%= f.input :first_name, required: false, autofocus: true, hint: "Deixe em branco, caso não queira alterar." %>
+    <%= f.input :last_name, required: false, hint: "Deixe em branco, caso não queira alterar." %>
+    <%= f.input :username, required: false, hint: "Deixe em branco, caso não queira alterar." %>
 
-    <%= f.input :address, required: true, placeholder: "Street, number", hint: "Leave it blank, if you don't want to change it" %>
-    <%= f.input :complement, required: true, placeholder: "apt, block, room..", hint: "leave it blank if you don't want to change it" %>
-    <%= f.input :borough, required: true, hint: "Leave it blank, if you don't want to change it" %>
-    <%= f.input :zip_code, required: true, hint: "Leave it blank, if you don't want to change it" %>
-    <%= f.input :city, required: true, hint: "Leave it blank, if you don't want to change it" %>
-    <%= f.input :state, required: true, hint: "Leave it blank, if you don't want to change it" %>
-    <%= f.input :country, as: :string, required: true, hint: "Leave it blank, if you don't want to change it" %>
+    <%= f.input :address, required: false, hint: "Rua, numero" %>
+    <%= f.input :zip_code, required: false %>
+    <%= f.input :city, required: false %>
+    <%= f.input :state, required: false %>
+    <%= f.input :country, as: :string, required: false %>
 
-    <%= f.input :password, autocomplete: "off", hint: "Leave it, blank if you don't want to change it", required: false %>
+    <%= f.input :password, autocomplete: "off", hint: "Deixe em branco, caso não queira alterar.", required: false %>
     <%= f.input :password_confirmation, required: false %>
     <%#= f.input :current_password, hint: "we need your current password to confirm your changes", required: false %>
     <%= f.input :photo, as: :attachinary %>

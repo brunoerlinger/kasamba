@@ -1,6 +1,10 @@
-<div>
+<div class= "container">
  <h5><%= link_to my_product.name, mine_product_path(my_product) %></h5>
  <h7><%= my_product.address %></h7>
+ <h7><%= my_product.state %></h7>
+ <h7><%= my_product.city %></h7>
+ <h7><%= my_product.zip_code%></h7>
+
  <br>
    <div>
     <% if my_product.photos? %>

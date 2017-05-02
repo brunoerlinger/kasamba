@@ -32,24 +32,23 @@
 }
 
 /* Navbar item */
-.navbar-wagon-item {
+.navbar-wagon-item{
   flex: 0 1 auto;
   cursor: pointer;
   padding: 0 20px;
 }
 
 /* Navbar standard link */
-.navbar-wagon-link {
-  color: #616668;
-  font-size: 14px;
+.text-name-navbar h2{
+  color: #1B935D;
 }
-.navbar-wagon-link:hover {
-  color: #da552f;
-  text-decoration: none;
+
+.text-name-navbar a:hover {
+  text-decoration: none !important;
 }
 
 /* Navbar right button */
-.navbar-wagon-button {
+.navbar-wagon-button{
   margin-left: 10px;
   padding: 0 20px;
   border-radius: 20em;
@@ -59,7 +58,7 @@
   font-size: 14px;
   border: 2px solid #D23333;
 }
-.navbar-wagon-button:hover {
+.navbar-wagon-button:hover{
   color: white;
   background: #D23333;
   border-color: #ac2626;
@@ -95,6 +94,7 @@
   font-size: 14px;
   outline: none;
 }
+
 .navbar-wagon-search-input:focus  {
   border: 1px solid #CCCCCC;
 }

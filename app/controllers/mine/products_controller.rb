@@ -23,7 +23,7 @@ class Mine::ProductsController < ApplicationController
     @my_product = Product.new
     @my_product.address = current_user.address
     @my_product.view = 0
-    @categories = Category.roots
+    @categories = Category.all
   end
 
   def create
@@ -43,8 +43,12 @@ class Mine::ProductsController < ApplicationController
 
   def update
     @my_product = Product.find(params[:id])
-    @my_product.update(my_product_params)
-    redirect_to mine_product_path(@my_product)
+    if @my_product.update(my_product_params)
+      redirect_to mine_product_path(@my_product)
+    else
+      @categories = Category.all
+      render :edit
+    end
   end
 
   def destroy

@@ -1,57 +1,86 @@
-<!-- <div class = "container"> -->
-  <% @products.each do |product| %>
-    <div class = "row">
-      <div class=" col-xs-12 col-xs-6">
-        <div class="card-product gradient">
+<div class="wrapper flexbox-all-div">
+  <div class = "container">
 
-          <div class="card-avatar-product-user">
-            <%= image_tag avatar_url(product.user), class: "avatar-product"%>
-          </div>
+    <%= select_tag "category", options_for_select(@categories.map{|c| [c.name, "/products?category=#{c.id}"] }), id: "selectbox_categories", class: "dropdown-index", prompt: "Navegue em outra categoria"%>
 
-          <div class="card-product-user">
-            <h3 id="text-user"> Kasambado por <%= product.user.first_name %></h3>
-          </div>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="products-flexbox">
+          <% @products.each do |product| %>
+            <div class="products-flex-item">
+              <div class="card-product">
+                <div class="card-product-photo">
+                </div>
 
-          <div class="card-category">
-            <h5 id="text-category"> <%= product.category.name %></h5>
-          </div>
+                <div class="card-avatar-product-user">
+                  <%= image_tag avatar_url(product.user), class: "avatar-product"%>
+                </div>
 
-          <div class="card-description">
-            <h5><%= product.description %></h5>
-          </div>
+                <div class="card-product-user text-center">
+                  <h3 id="card-text-user"> Kasambe da <%= product.user.first_name %></h3>
+                  <hr>
+                </div>
 
-          <div class="card-distance">
-            <h5><%= "A distância entre vocês é de #{(product.distance_from(current_user)).to_i} km"%></h5>
-          </div>
+                <div class="card-category text-center">
+                  <h5 id="card-text-category"> <%= product.category.name %></h5>
+                  <hr>
+                </div>
 
-          <%= link_to "Ver detalhes", product_path(product), class: "card-button btn btn-primary"%>
+                <div class="card-description text-center">
+                  <h5><%= product.description %></h5>
+                  <hr>
+                </div>
+
+                <div class="card-distance text-center">
+                  <h5><%= "A distância entre vocês é de #{(product.distance_from(current_user)).to_i} km"%></h5>
+                  <hr>
+                </div>
+
+                <div class="text-center">
+                  <%= link_to "Ver detalhes", product_path(product), class: "card-button btn btn-success"%>
+                </div>
+              </div>
+            </div>
+          <%end%>
         </div>
       </div>
     </div>
-  <%end%>
 
-
-  <%= select_tag "category", options_for_select(@categories.map{|c| [c.name, "/products?category=#{c.id}"] }), id: "selectbox_categories", style: "width: 700px;", prompt: "Navegue em outra categoria"%>
-<!-- </div> -->
-<div class = " container row" id="map">
-  <% content_for(:after_js) do %>
-     <%= javascript_tag do %>
-       $(document).ready(function() {
-         var handler = Gmaps.build('Google');
-         handler.buildMap({ internal: { id: 'map' } }, function() {
-           markers = handler.addMarkers(<%= raw @hash.to_json %>);
-           handler.bounds.extendWith(markers);
-           handler.fitMapToBounds();
-           if (markers.length == 0) {
-             handler.getMap().setZoom(2);
-           } else if (markers.length == 1) {
-             handler.getMap().setZoom(5);
-           }
-         });
-       });
-    <% end %>
-  <% end %>
+  </div>
 </div>
+
+  <div class="map affix-top">
+    <div id="map">
+      <% content_for(:after_js) do %>
+        <%= javascript_tag do %>
+          $(document).ready(function() {
+            var handler = Gmaps.build('Google');
+            handler.buildMap({ internal: { id: 'map' } }, function() {
+            markers = handler.addMarkers(<%= raw @hash.to_json %>);
+            handler.bounds.extendWith(markers);
+            handler.fitMapToBounds();
+            if (markers.length == 0) {
+             handler.getMap().setZoom(6);
+            }
+            });
+
+            <%if @products.any? %>
+            $('.map').affix({
+              offset: {
+                top: 70,
+                // bottom: function () {
+                //  return (this.bottom = $('.footer').outerHeight(true))
+                // }
+              }
+            });
+            <%end%>
+
+          });
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
 
 
 

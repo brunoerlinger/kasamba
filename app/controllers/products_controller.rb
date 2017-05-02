@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @categories = Category.roots
+    @categories = Category.all
     @category = Category.find(params[:category])
     @products = Product.where(category_id: @category.subtree_ids)
     @order_iten = current_order.order_itens.new

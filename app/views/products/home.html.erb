@@ -1,10 +1,55 @@
-<div class="row">
-  <div class="col-md-12">
-    <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('');">
-      <div class="text-center banner-content container">
-        <h1><strong>KASAMBA<strong></h1>
-        <p>Lixo não precisa ser Lixo</p>
-        <%= select_tag "category", options_for_select(@categories.map{|c| [c.name, "/products?category=#{c.id}"] }), id: "selectbox_categories", style: "width: 700px;", prompt: "Escolha uma categoria"%>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,40,0,0.6) 0%, rgba(0,36,40,0.6) 50%), url('/assets/upcycling.jpg');">
+        <div class="text-center banner-content">
+          <h1><strong>KASAMBA<strong></h1>
+          <p>Lixo <strong>não precisa</strong> ser Lixo</p>
+          <div class="banner-dropdown">
+          <%= select_tag "category", options_for_select(@categories.map{|c| [c.name, "/products?category=#{c.id}"] }), id: "selectbox_categories", prompt: "Encontre resíduos por categoria"%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container padded">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 class="text-center margin-bottom-fix">Como funciona</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="card text-center">
+        <img src='/assets/stp1.png' alt="">
+      </div>
+      <div class="card-description">
+        <p class="text-center startup">Materiais só se tornam lixo quando ignora-se o fato de que podem ser reutilizados ou reciclados por outras pessoas. Não seja quem ignora, ajude o meio ambiente!</p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="card text-center">
+        <img src="/assets/info.png" alt="">
+      </div>
+      <div class="card-description">
+        <p class="text-center startup">Antes de jogar <strong>qualquer coisa</strong> fora em sua casa ou no trabalho, ou mesmo quando se deparar com uma caçamba cheia na rua, use o <strong>Kasamba</strong> para mostrar para outras pessoas o que é e onde está este material.</p>
+      </div>
+    </div>
+     <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="card text-center">
+        <img src="/assets/recycle.png" alt="">
+      </div>
+      <div class="card-description">
+        <p class="text-center startup">Você ajuda aqueles que reutilizam ou reciclam materiais a encontrarem o que precisam e o meio ambiente agradece.</p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="card text-center">
+        <img src="/assets/money.png" alt="">
+      </div>
+      <div class="card-description">
+        <p class="text-center startup">Dependendo do produto ou material, você pode deixar de jogar algo valioso no lixo e até ganhar por isso!</p>
       </div>
     </div>
   </div>

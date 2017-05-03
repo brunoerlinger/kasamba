@@ -43,8 +43,8 @@
   color: #1B935D;
 }
 
-.text-name-navbar a:hover {
-  text-decoration: none !important;
+a:hover, a:focus{
+  text-decoration: none !important ;
 }
 
 /* Navbar right button */

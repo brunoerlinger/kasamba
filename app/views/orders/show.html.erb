@@ -1,15 +1,19 @@
-<% if !@order_iten.nil? && @order_iten.errors.any? %>
-  <div class="alert alert-danger">
-    <ul>
-    <% @order_iten.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
+<div class="container">
+  <% if !@order_iten.nil? && @order_iten.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+      <% @order_iten.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="order-kasamba padded">
+    <%= render 'order_list' %>
+
+    <div class="padded text-right">
+      <%= link_to 'Finalizar', root_path, class: "text-right btn-order btn btn-success" %>
+    </div>
   </div>
-<% end %>
-<div class="container order-kasamba padded">
-
-  <%= render 'order_list' %>
-
-<div class="padded text-right"><%= link_to 'Finalizar', root_path, class: "text-right btn btn-primary" %></div>
 </div>

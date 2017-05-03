@@ -1,14 +1,12 @@
 
-.card
-{
+.card{
     width: 100%;
     height: 100%;
     background-size: cover !important;
 }
 
 
-.link-to-text-color
-{
+.link-to-text-color{
     color: black;
 }
 
@@ -21,20 +19,20 @@
   background-color: white;
   box-shadow: 0 8px 5px rgba(0, 0, 0, 0.4);
   padding-bottom: 13px;
+  position: relative;
 }
 
 .card-avatar-product-user {
   position: relative;
-  top: 55px;
+  top: -13px;
   text-align: center;
 }
 
 .card-product-user{
   font-size: 20px;
-  margin-top: 66px;
+  margin-top: 31px;
   text-align: center;
 }
-
 
 .startup {
   font-size: 13px;
@@ -97,11 +95,11 @@
 // }
 
 .card-description{
-  margin-left: 16px;
-  margin-top: 20px;
+  margin-left: 18px;
+  margin-top: 35px;
   text-align: center;
   word-wrap: break-word;
-  padding-right: 5px;
+  padding-right: 10px;
 }
 
 .card-user-product{
@@ -114,8 +112,7 @@
 .card-category{
   margin-left: 16px;
   margin-bottom: 21px;
-  margin-top: 39px;
+  margin-top: 31px;
   font-size: 10px;
   text-align: center;
 }
-

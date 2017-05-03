@@ -1,6 +1,7 @@
 <div class="wrapper flexbox-all-div">
   <div class = "container">
 
+
     <%= select_tag "category", options_for_select(@categories.map{|c| [c.name, "/products?category=#{c.id}"] }), id: "selectbox_categories", class: "dropdown-index", prompt: "Navegue em outra categoria"%>
 
     <div class="row">
@@ -17,15 +18,17 @@
                     </div>
 
                     <div class="card-product-user text-center">
-                      <h3 id="card-text-user"> Kasambe da <%= product.user.first_name %></h3>
+                      <h3 id="card-text-user"> Kasamba de <%= product.user.first_name %></h3>
                     </div>
 
                     <hr>
                     <div class="card-category text-center">
                       <h5 id="card-text-category"> <%= product.category.name %>
+                        <% if current_user.address.present? %>
                         <span style="font-weight: normal; margin-left: 10px;">
-                          <%="(#{(product.distance_from(current_user)).to_i} km)"%>
+                          <%="(#{(product.distance_from(current_user))} km)"%>
                         </span>
+                        <% end %>
                       </h5>
                     </div>
 
@@ -38,7 +41,7 @@
                     <hr>
 
                     <!-- <div class="card-distance text-center">
-                      <h5><%= "A distância entre vocês é de #{(product.distance_from(current_user)).to_i} km"%></h5>
+                      <h5><%#= "A distância entre vocês é de #{(product.distance_from(current_user)).to_i} km"%></h5>
                       <hr>
                     </div> -->
 

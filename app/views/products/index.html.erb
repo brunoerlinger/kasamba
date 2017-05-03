@@ -1,4 +1,5 @@
-<div class="wrapper flexbox-all-div">
+<div class="wrapper">
+<div class="flexbox-all-div">
   <div class = "container">
 
 
@@ -49,49 +50,44 @@
                       <%= link_to "Ver detalhes", product_path(product), class: "card-button btn btn-success"%>
                     </div>
                   </div>
-                </div>
+                <%end%>
               </div>
-            <%end%>
+            </div>
           </div>
         </div>
-      </div>
+
     </div>
   </div>
 </div>
+ <div class="map affix-top">
+      <div id="map">
+        <% content_for(:after_js) do %>
+         <%= javascript_tag do %>
+           $(document).ready(function() {
+             var handler = Gmaps.build('Google');
+             handler.buildMap({ internal: { id: 'map' } }, function() {
+             markers = handler.addMarkers(<%= raw @hash.to_json %>);
+             handler.bounds.extendWith(markers);
+             handler.fitMapToBounds();
+             if (markers.length == 0) {
+              handler.getMap().setZoom(6);
+             }
+             });
 
-
-  <div class="map affix-top">
-    <div id="map">
-      <% content_for(:after_js) do %>
-        <%= javascript_tag do %>
-          $(document).ready(function() {
-            var handler = Gmaps.build('Google');
-            handler.buildMap({ internal: { id: 'map' } }, function() {
-            markers = handler.addMarkers(<%= raw @hash.to_json %>);
-            handler.bounds.extendWith(markers);
-            handler.fitMapToBounds();
-            if (markers.length == 0) {
-             handler.getMap().setZoom(6);
-            }
-            });
-
-            <%if @products.any? %>
-            $('.map').affix({
-              offset: {
-                top: 70,
-                // bottom: function () {
-                //  return (this.bottom = $('.footer').outerHeight(true))
-                // }
-              }
-            });
+             <%if @products.any? %>
+              $('.map').affix({
+                offset: {
+                  top: 60,
+                  bottom: function () {
+                    return (this.bottom = $('.footer').outerHeight(true))
+                  }
+                }
+              })
             <%end%>
 
-          });
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-
-
-
+           });
+         <% end %>
+       <% end %>
+     </div>
+   </div>
 

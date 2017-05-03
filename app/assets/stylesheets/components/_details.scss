@@ -3,9 +3,12 @@
   height: 100%;
   right: 20px;
   top: 0;
+  display: table;
 }
+
 html, body {
   height: 100%;
+  background-color: #F8F8F8;
 }
 
 #map {
@@ -18,7 +21,6 @@ html, body {
 }
 
 .wrapper{
-  background-color: #F8F8F8;
   min-height: 100%;
 }
 
@@ -47,4 +49,8 @@ html, body {
 .flexbox-all-div{
   display: flex;
   justify-content: flex-start;
+}
+
+.affix-bottom {
+    position: absolute;
 }

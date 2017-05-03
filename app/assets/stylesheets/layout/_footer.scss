@@ -1,5 +1,4 @@
 // Your footer style
-
 .footer {
   background: #333333;
   padding: 0px 0;
@@ -22,9 +21,26 @@
 }
 
 .footer a:hover{
-  color: yellow;
+  color: #1B935D;
 }
 
 .fix-position {
   margin-top: 5px;
+}
+
+.lewagon-footer{
+  font-size: 15px;
+  font-weight: lighter;
+}
+
+.lewagon-footer a{
+  color: #962525;
+  font-weight: lighter;
+  font-style: italic;
+  font-size: 15px;
+  letter-spacing: 3px;
+}
+
+.lewagon-footer a:hover{
+  color: #D13333;
 }

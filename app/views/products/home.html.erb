@@ -1,3 +1,4 @@
+
   <div class="row">
     <div class="col-xs-12">
       <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,40,0,0.6) 0%, rgba(0,36,40,0.6) 50%), url('/assets/upcycling.jpg');">
@@ -12,7 +13,8 @@
     </div>
   </div>
 
-<div class="container">
+
+<div class="container padded">
   <div class="row">
     <div class="col-xs-12">
       <h2 class="text-center margin-bottom-fix">Como funciona</h2>
@@ -22,7 +24,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
       <div class="card text-center">
-        <img src='/assets/stp1.png' alt="Kasamba" height="120" width="120">
+        <%= image_tag "stp1.png", alt:"Kasamba", height:"120", width:"120" %>
       </div>
       <div class="card-description">
         <p class="text-center startup">Materiais só se tornam lixo quando ignora-se o fato de que podem ser reutilizados ou reciclados por outras pessoas. Não seja quem ignora, ajude o meio ambiente!</p>
@@ -30,7 +32,7 @@
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
       <div class="card text-center">
-        <img src="/assets/info.png" alt="Info" height="120" width="120">
+        <%= image_tag "info.png", alt:"Kasamba", height:"120", width:"120" %>
       </div>
       <div class="card-description">
         <p class="text-center startup">Antes de jogar <strong>qualquer coisa</strong> fora em sua casa ou no trabalho, ou mesmo quando se deparar com uma caçamba cheia na rua, use o <strong>Kasamba</strong> para mostrar para outras pessoas o que é e onde está este material.</p>
@@ -38,7 +40,7 @@
     </div>
      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
       <div class="card text-center">
-        <img src="/assets/recycle.png" alt="Recycle" height="120" width="120">
+        <%= image_tag "recycle.png", alt:"Kasamba", height:"120", width:"120" %>
       </div>
       <div class="card-description">
         <p class="text-center startup">Você ajuda aqueles que reutilizam ou reciclam materiais a encontrarem o que precisam e o meio ambiente agradece.</p>
@@ -46,7 +48,7 @@
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
       <div class="card text-center">
-        <img src="/assets/money.png" alt="Money waste" height="120" width="120">
+        <%= image_tag "money.png", alt:"Kasamba", height:"120", width:"120" %>
       </div>
       <div class="card-description">
         <p class="text-center startup">Dependendo do produto ou material, você pode deixar de jogar algo valioso no lixo e até ganhar por isso!</p>
@@ -54,18 +56,3 @@
     </div>
   </div>
 </div>
-
-<!-- <div class="row" >
-  <div class="col-xs-12 text-center"><h3>Veja Nossas Categorias</h3>
-</div>
-<div class="row">
-  <% @categories.each do |category| %>
-  <div class="col-xs-12 col-sm-3 center">
-    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%#= cl_image_path cocktail.photo.path, height: 300, width: 400, crop: :fill %>')">
-      <div class="card-description text-center">
-       <h3><%= link_to category.name, products_path(category: category), class: 'link-to-text-color' %></h3>
-      </div>
-    </div>
-  </div>
-  <% end %>
-</div> -->

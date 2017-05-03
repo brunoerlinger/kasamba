@@ -30,7 +30,9 @@ html, body {
 }
 
 .products-flex-item{
-  flex: 1 1 auto;
+  width: 300px;
+  float: left;
+  margin-right: 30px;
 }
 
 .dropdown-index{
@@ -53,4 +55,31 @@ html, body {
 
 .affix-bottom {
     position: absolute;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    /* height: 26px; */
+    position: absolute;
+    top: 0 !important;
+    //bottom: 0 !important;
+    right: 15px !important;
+    padding: 20px 0;
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1.2px solid #E9E7EC;
+    border-radius: 2px;
+    padding: 20px;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #27C87D;
+    color: white;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #444;
+    line-height: 20px;
+    margin-top: -8px;
 }

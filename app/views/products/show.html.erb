@@ -15,9 +15,38 @@
     </div>
   </div>
 
-  <br>
-  <br>
-  <br>
+<div class="map affix-top">
+  <div id="map">
+    <% content_for(:after_js) do %>
+      <%= javascript_tag do %>
+        $(document).ready(function() {
+         var handler = Gmaps.build('Google');
+         handler.buildMap({ internal: { id: 'map' } }, function() {
+         markers = handler.addMarkers(<%= raw @hash.to_json %>);
+         handler.bounds.extendWith(markers);
+         handler.fitMapToBounds();
+         if (markers.length == 0) {
+          handler.getMap().setZoom(6);
+         }
+         });
+
+             <%if @products.any? %>
+              $('.map').affix({
+                offset: {
+                  top: 60,
+                  bottom: function () {
+                    return (this.bottom = $('.footer').outerHeight(true))
+                  }
+                }
+              })
+            <%end%>
+
+           });
+         <% end %>
+
+    <% end %>
+  </div>
+</div>
 
   <h2>Questões para esse produto</h2>
 

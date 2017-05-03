@@ -4,6 +4,8 @@
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :category_id, collection: @categories , as: :grouped_select, group_method: :children %>
+
+
     <%= f.input :price %>
     <%= f.input :address %>
     <%= f.input :city %>

@@ -1,5 +1,6 @@
 <% if @order.errors.any? || @order_iten.errors.any? %>
-alert("Este resíduo já foi retirado da Kasamba.")
+    alert("Este resíduo já foi retirado da Kasamba.")
 <% else %>
   $(".cart-text").html("<%= current_order.order_itens.size %>")
+  alert("Resíduo incluído na sua Kasamba!")
 <% end %>

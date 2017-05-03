@@ -8,8 +8,8 @@ class Product < ApplicationRecord
   belongs_to :category
   has_many :questions
 
-  validates :name, :description, :price, :category_id , presence: :true
-  validates :address, :state, :zip_code, presence: :true
+  validates :name, :description, :price, :category_id, :photos, presence: :true
+  validates :address, :city, :state, :zip_code, presence: :true
 
   def full_address
     "#{address}, #{city}, #{state}, #{zip_code}"

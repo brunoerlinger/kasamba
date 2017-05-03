@@ -1,12 +1,12 @@
 <div class="container">
-  <h2> Meus Produtos</h2>
+  <h2>Minha Kasamba</h2>
   <hr>
   <% @my_products.each do |product|  %>
     <h3><%= link_to product.name, mine_product_path(product) %></h3>
   <% end %>
   <br>
 
-  <%= link_to 'Kasambe um novo produto', new_mine_product_path, class: "button-index btn btn-primary" %>
+  <%= link_to 'Kasambe um novo resíduo', new_mine_product_path, class: "button-index btn btn-primary" %>
 
   <%#= link_to "Ir para os Produtos", products_path, class: "button-index btn btn-warning" %>
   <br>

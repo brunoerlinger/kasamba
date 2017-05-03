@@ -17,6 +17,8 @@ require "attachinary/orm/active_record"  # <= Add this line
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
+
 module Kasamba
   class Application < Rails::Application
     config.generators do |generate|
@@ -24,6 +26,7 @@ module Kasamba
     end
 
     config.action_view.embed_authenticity_token_in_remote_forms = true
+    config.serve_static_assets = true
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

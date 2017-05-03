@@ -1,63 +1,56 @@
-<div class="wrapper">
-  <div class="flexbox-all-div">
-    <div class = "container">
-      <%= select_tag "category", options_for_select(@categories.map{|c| [c.name, "/products?category=#{c.id}"] }), id: "selectbox_categories", class: "dropdown-index", prompt: "Navegue em outra categoria"%>
+<div class="wrapper flexbox-all-div">
+  <div class = "container">
 
-        <div class="row">
-          <div class="col-md-8">
-            <div class="products-flexbox">
-              <div class="row">
-                <% @products.each do |product| %>
-                  <div class="col-md-6">
-                    <div class="products-flex-item">
-                      <div class="card-product">
+    <%= select_tag "category", options_for_select(@categories.map{|c| [c.name, "/products?category=#{c.id}"]}), id: "selectbox_categories", class: "dropdown-index", prompt: "Navegue em outra categoria"%>
 
-                        <div class="card-avatar-product-user">
-                          <%= image_tag avatar_url(product.user), class: "avatar-product"%>
-                        </div>
-
-                        <div class="card-product-user text-center">
-                          <h3 id="card-text-user"> Kasambe da <%= product.user.first_name %></h3>
-                        </div>
-
-                        <hr>
-                        <div class="card-category text-center">
-                          <h5 id="card-text-category"> <%= product.category.name %>
-                            <span style="font-weight: normal; margin-left: 10px;">
-                              <%="(#{(product.distance_from(current_user)).to_i} km)"%>
-                            </span>
-                          </h5>
-                        </div>
-
-                        <hr>
-
-                        <div class="card-description text-center">
-                          <h5><%= product.description %></h5>
-                        </div>
-
-                        <hr>
-
-                        <!-- <div class="card-distance text-center">
-                          <h5><%= "A distância entre vocês é de #{(product.distance_from(current_user)).to_i} km"%></h5>
-                          <hr>
-                        </div> -->
-
-                        <div class="text-center card-button-center ">
-                          <%= link_to "Ver detalhes", product_path(product), class: "card-button btn btn-success"%>
-                        </div>
-                      </div>
-                    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="products-flexbox">
+          <div class="row">
+            <% @products.each do |product| %>
+              <div class="products-flex-item">
+                <div class="card-product">
+                  <div class="card-avatar-product-user">
+                    <%= image_tag avatar_url(product.user), class: "avatar-product"%>
                   </div>
-                <%end%>
+
+                  <div class="card-product-user text-center">
+                    <h3 id="card-text-user"> Kasambe da <%= product.user.first_name %></h3>
+                  </div>
+
+                  <hr>
+                  <div class="card-category text-center">
+                    <h5 id="card-text-category"> <%= product.category.name %>
+                      <span style="font-weight: normal; margin-left: 10px;">
+                        <%="(#{(product.distance_from(current_user)).to_i} km)"%>
+                      </span>
+                    </h5>
+                  </div>
+
+                  <hr>
+
+                  <div class="card-description text-center">
+                    <h5><%= product.description %></h5>
+                  </div>
+
+                  <!-- <div class="card-distance text-center">
+                    <h5><%= "A distância entre vocês é de #{(product.distance_from(current_user)).to_i} km"%></h5>
+                    <hr>
+                  </div> -->
+
+                  <div class="text-center card-button-center ">
+                    <%= link_to "Ver detalhes", product_path(product), class: "card-button btn btn-success"%>
+                  </div>
+                </div>
               </div>
-            </div>
+            <%end%>
           </div>
         </div>
-
+      </div>
     </div>
   </div>
 </div>
- <div class="map affix-top">
+<div class="map affix-top">
       <div id="map">
         <% content_for(:after_js) do %>
          <%= javascript_tag do %>
@@ -75,7 +68,7 @@
              <%if @products.any? %>
               $('.map').affix({
                 offset: {
-                  top: 60,
+                  top: 70,
                   bottom: function () {
                     return (this.bottom = $('.footer').outerHeight(true))
                   }

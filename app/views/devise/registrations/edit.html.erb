@@ -1,30 +1,31 @@
 <div class="container">
   <h2>Edite sua conta <%= resource_name.to_s.humanize %></h2>
+  <br>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+    <%= f.input :email, label: "E-mail", required: true, autofocus: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :first_name, required: false, autofocus: true, :input_html => {:style => 'width: 400px'}, hint: "Deixe em branco, caso não queira alterar." %>
-    <%= f.input :last_name, required: false, :input_html => {:style => 'width: 400px'}, hint: "Deixe em branco, caso não queira alterar." %>
-    <%= f.input :username, required: false, :input_html => {:style => 'width: 400px'}, hint: "Deixe em branco, caso não queira alterar." %>
+    <%= f.input :first_name, label: "Nome", required: false, autofocus: true, :input_html => {:style => 'width: 400px'} %>
+    <%= f.input :last_name, label: "Sobrenome", required: true, :input_html => {:style => 'width: 400px'} %>
+    <%= f.input :username, label: "Username", required: true, :input_html => {:style => 'width: 400px'} %>
 
-    <%= f.input :address, required: false, :input_html => {:style => 'width: 400px'}, hint: "Rua, numero" %>
-    <%= f.input :zip_code, required: false, :input_html => {:style => 'width: 400px'} %>
-    <%= f.input :city, required: false, :input_html => {:style => 'width: 400px'} %>
-    <%= f.input :state, required: false, :input_html => {:style => 'width: 400px'} %>
-    <%= f.input :country, as: :string, :input_html => {:style => 'width: 400px'}, required: false %>
+    <%= f.input :address, label: "Endereço", required: false, :input_html => {:style => 'width: 400px'}, hint: "Rua, número" %>
+    <%= f.input :zip_code, label: "CEP", required: false, :input_html => {:style => 'width: 400px'} %>
+    <%= f.input :city, label: "Cidade", required: false, :input_html => {:style => 'width: 400px'} %>
+    <%= f.input :state, label: "Estado", required: false, :input_html => {:style => 'width: 400px'} %>
+    <%= f.input :country, label: "País", as: :string, :input_html => {:style => 'width: 400px'}, required: false %>
 
-    <%= f.input :password, autocomplete: "off", :input_html => {:style => 'width: 400px'}, hint: "Deixe em branco, caso não queira alterar.", required: false %>
-    <%= f.input :password_confirmation, :input_html => {:style => 'width: 400px'}, required: false %>
+    <%= f.input :password, label: "Senha", autocomplete: "off", :input_html => {:style => 'width: 400px'}, hint: "Deixe em branco, caso não queira alterar.", required: false %>
+    <%= f.input :password_confirmation, label: "Confirmar senha", :input_html => {:style => 'width: 400px'}, required: false %>
     <%#= f.input :current_password, hint: "we need your current password to confirm your changes", required: false %>
-    <%= f.input :photo, as: :attachinary %>
+    <%= f.input :photo, label: "Foto", as: :attachinary %>
 
   </div>
 

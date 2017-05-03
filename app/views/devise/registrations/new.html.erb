@@ -6,13 +6,13 @@
     <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :first_name, required: true, autofocus: true, :input_html => {:style => 'width: 400px'}%>
-    <%= f.input :last_name, required: true, :input_html => {:style => 'width: 400px'} %>
-    <%= f.input :username, required: true, :input_html => {:style => 'width: 400px'} %>
-    <%= f.input :email, required: true, :input_html => {:style => 'width: 400px'} %>
-    <%= f.input :password, required: true, :input_html => {:style => 'width: 400px'}, hint: ("#{@minimum_password_length} número mínimo de caracteres" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true, :input_html => {:style => 'width: 400px'} %>
-    <%= f.input :photo, as: :attachinary %>
+    <%= f.input :first_name, label: "Nome", required: true, autofocus: true, :input_html => {:style => 'width: 400px'}%>
+    <%= f.input :last_name, label: "Sobrenome", required: true, :input_html => {:style => 'width: 400px'} %>
+    <%= f.input :username, label: "Username", required: true, :input_html => {:style => 'width: 400px'} %>
+    <%= f.input :email, label: "E-mail", required: true, :input_html => {:style => 'width: 400px'} %>
+    <%= f.input :password, label: "Senha", required: true, :input_html => {:style => 'width: 400px'}, hint: ("#{@minimum_password_length} número mínimo de caracteres" if @minimum_password_length) %>
+    <%= f.input :password_confirmation, label: "Confirmar senha", required: true, :input_html => {:style => 'width: 400px'} %>
+    <%= f.input :photo, label: "Foto de perfil", as: :attachinary %>
   </div>
 
     <div class="form-actions">

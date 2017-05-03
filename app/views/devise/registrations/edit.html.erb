@@ -11,28 +11,28 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :first_name, required: false, autofocus: true, hint: "Deixe em branco, caso não queira alterar." %>
-    <%= f.input :last_name, required: false, hint: "Deixe em branco, caso não queira alterar." %>
-    <%= f.input :username, required: false, hint: "Deixe em branco, caso não queira alterar." %>
+    <%= f.input :first_name, required: false, autofocus: true, :input_html => {:style => 'width: 400px'}, hint: "Deixe em branco, caso não queira alterar." %>
+    <%= f.input :last_name, required: false, :input_html => {:style => 'width: 400px'}, hint: "Deixe em branco, caso não queira alterar." %>
+    <%= f.input :username, required: false, :input_html => {:style => 'width: 400px'}, hint: "Deixe em branco, caso não queira alterar." %>
 
-    <%= f.input :address, required: false, hint: "Rua, numero" %>
-    <%= f.input :zip_code, required: false %>
-    <%= f.input :city, required: false %>
-    <%= f.input :state, required: false %>
-    <%= f.input :country, as: :string, required: false %>
+    <%= f.input :address, required: false, :input_html => {:style => 'width: 400px'}, hint: "Rua, numero" %>
+    <%= f.input :zip_code, required: false, :input_html => {:style => 'width: 400px'} %>
+    <%= f.input :city, required: false, :input_html => {:style => 'width: 400px'} %>
+    <%= f.input :state, required: false, :input_html => {:style => 'width: 400px'} %>
+    <%= f.input :country, as: :string, :input_html => {:style => 'width: 400px'}, required: false %>
 
-    <%= f.input :password, autocomplete: "off", hint: "Deixe em branco, caso não queira alterar.", required: false %>
-    <%= f.input :password_confirmation, required: false %>
+    <%= f.input :password, autocomplete: "off", :input_html => {:style => 'width: 400px'}, hint: "Deixe em branco, caso não queira alterar.", required: false %>
+    <%= f.input :password_confirmation, :input_html => {:style => 'width: 400px'}, required: false %>
     <%#= f.input :current_password, hint: "we need your current password to confirm your changes", required: false %>
     <%= f.input :photo, as: :attachinary %>
 
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update", class: "button-edit btn-sm btn btn-success" %>
-    <%= link_to "Back", :back, class: "button-edit btn-sm btn btn-primary"%>
+    <%= f.button :submit, "Atualizar", class: "button-edit btn-sm btn btn-success" %>
+    <%= link_to "Voltar", :back, class: "button-edit btn-sm btn btn-primary"%>
     <h2> Não curtiu?</h2>
-    <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "button-edit btn-sm btn btn-danger" %>
+    <%= link_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "Você tem certeza?" }, method: :delete, class: "button-edit btn-sm btn btn-danger" %>
     <br>
     <br>
   </div>

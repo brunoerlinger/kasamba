@@ -1,11 +1,13 @@
-<div class="container">
   <% if @order_itens.size == 0 %>
     <h3 class="text-center">
-      Não há itens no seu carrinho. Por favor, <%= link_to "volte", root_path %> e adcione alguns na sua Kasamba
+      Você não escolheu nenhum resíduo de outras <strong>Kasambas</strong>.
+      <br>
+      <br>
+      Por favor, <%= link_to "volte", root_path %> e navegue pelas categorias.
     </h3>
   <% else %>
     <div>
-      <h3>  Você está retirando <strong><%= current_order.order_itens.size %></strong> resíduo(s) de outra(s) <strong>Kasamba(s)</strong>:</h3>
+      <h3>Você está retirando <strong><%= current_order.order_itens.size %></strong> resíduo(s) de outra(s) <strong>Kasamba(s)</strong>:</h3>
     </div>
 
     <br>
@@ -21,5 +23,8 @@
     <div class="text-right">
       <h3>Total: <strong><%= number_to_currency current_order.subtotal %></strong></h3>
     </div>
+
+    <div class="padded text-right">
+      <%= link_to 'Finalizar', root_path, class: "text-right btn-order btn btn-success" %>
+    </div>
   <% end %>
-</div>

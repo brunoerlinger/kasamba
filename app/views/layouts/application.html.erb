@@ -27,15 +27,15 @@
       <meta name="twitter:description" content="<%= meta_description %>">
       <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
       <meta name="twitter:image:src" content="<%= meta_image %>">
-  </head>
+        </head>
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <footer class="footer">
-      <%= render 'shared/footer' %>
-    </footer>
 
+    <footer class="footer">
+        <%= render 'shared/footer' %>
+    </footer>
     <%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/ infobox_packed.js" %>
@@ -45,4 +45,5 @@
     <%= cloudinary_js_config %> <!-- Append this after the main `javascript_include_tag`. -->
     <%= yield(:after_js) %>
   </body>
+
 </html>

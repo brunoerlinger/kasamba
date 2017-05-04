@@ -37,12 +37,13 @@
 // }
 
 .dropdown-index{
-  width: 700px;
+  width: 100%;
 }
 
 .container-products{
   margin-top: 35px;
   margin-left: 63px;
+  flex: 0 1 50%;
 }
 
 .row-products{

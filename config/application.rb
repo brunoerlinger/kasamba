@@ -13,9 +13,12 @@ require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 require "attachinary/orm/active_record"  # <= Add this line
 
+
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+
 
 
 
@@ -27,6 +30,7 @@ module Kasamba
 
     config.action_view.embed_authenticity_token_in_remote_forms = true
     config.serve_static_assets = true
+    config.exceptions_app = self.routes
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

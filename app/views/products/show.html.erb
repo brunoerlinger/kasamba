@@ -1,89 +1,56 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-4">
-      <div class="card-serv" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%#= cl_image_path background_url(@service), height: 300, width: 400, crop: :fill %>')">
+<div class="wrapper-products">
+	<div class="container">
+		 <h3><%= @product.name %></h3>
+		 <h4><%= @product.description %></h4>
+		 <h4><%= @product.price %></h4>
+	 	<% if current_user.address.present? %>
+	 		<span style="font-weight: normal; margin-left: 10px;">
+			<%="(#{(@product.distance_from(current_user)).to_i} km)"%>
+			</span>
+		<% end %>
+	</div>
+	<div class="container">
+		<%= form_for @order_iten, remote: true do |f| %>
+		<span style="color: green"><%= number_to_currency @product.price %></span>
+		<div class="input-group">
+			<div class="input-group-btn">
+				<%= f.hidden_field :product_id, value: @product.id %>
+				%= f.submit "Quero esse resíduo!", class: "btn btn-success" %>
+			</div>
+		</div>
+		<%end%>
+	</div>
 
-        <div class="card-user-service">
-          <h3><%= @product.name %></h3>
-          <p>Preço: R$ <%= @product.price %> (<%= @product.view %> visualizações)</p>
-        </div>
-        <div class="card-description-service">
-          <h4><%= @product.description %></h4>
-        </div>
+	<div class=container>
+		<h2>Questões para esse produto</h2>
+		<%= simple_form_for([ @product, @question ]) do |form| %>
+			<%= form.input :question %>
+			<%= form.button :submit %>
+		<% end %>
 
-      </div>
-    </div>
-  </div>
+		<% @questions.each  do |question| %>
+			<%= question.question %>
+			<% if question.answer != nil %>
+				<h4><%= question.answer %></h4>
+			<% end %>
+		<% end %>
+	</div>
 
-<div class="map affix-top">
-  <div id="map">
-    <% content_for(:after_js) do %>
-      <%= javascript_tag do %>
-        $(document).ready(function() {
-         var handler = Gmaps.build('Google');
-         handler.buildMap({ internal: { id: 'map' } }, function() {
-         markers = handler.addMarkers(<%= raw @hash.to_json %>);
-         handler.bounds.extendWith(markers);
-         handler.fitMapToBounds();
-         if (markers.length == 0) {
-          handler.getMap().setZoom(6);
-         }
-         });
-
-             <%if @products.any? %>
-              $('.map').affix({
-                offset: {
-                  top: 60,
-                  bottom: function () {
-                    return (this.bottom = $('.footer').outerHeight(true))
-                  }
-                }
-              })
-            <%end%>
-
-           });
-         <% end %>
-
-    <% end %>
-  </div>
+	<div class="map-css" id="map">
+		<% content_for(:after_js) do %>
+			<%= javascript_tag do %>
+				$(document).ready(function() {
+					var handler = Gmaps.build('Google');
+					handler.buildMap({ internal: { id: 'map' } }, function() {
+						markers = handler.addMarkers(<%= raw @hash.to_json %>);
+						handler.bounds.extendWith(markers);
+						handler.fitMapToBounds();
+						if (markers.length == 0) {
+							handler.getMap().setZoom(6);
+						}
+					});
+				});
+			<% end %>
+		<% end %>
+	</div>
 </div>
-
-  <h2>Questões para esse produto</h2>
-
-  <%= simple_form_for([ @product, @question ]) do |form| %>
-    <%= form.input :question %>
-    <%= form.button :submit %>
-  <% end %>
-
-  <% @questions.each  do |question| %>
-    <%= question.question %>
-    <% if question.answer != nil %>
-      <h4><%= question.answer %></h4>
-    <% end %>
-  <% end %>
-
-  <br>
-  <br>
-  <br>
-  <%= @distance %>
-  <br>
-  <br>
-  <br>
-
-  <div class="well">
-    <div class="row">
-      <div class="col-xs-4">
-        <%= form_for @order_iten, remote: true do |f| %>
-        <h4 class="text-right">Preço: <span style="color: green"><%= number_to_currency @product.price %></span></h4>
-          <div class="input-group">
-            <div class="input-group-btn">
-              <%= f.hidden_field :product_id, value: @product.id %>
-              <%= f.submit "Quero esse resíduo!", class: "btn btn-success" %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-

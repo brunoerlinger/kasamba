@@ -1,11 +1,16 @@
-<div class="wrapper">
+<div class="wrapper-products">
   <div class="flexbox-all-div">
-    <div class = "container">
+    <div class = "container container-products">
       <%= select_tag "category", options_for_select(@categories.map{|c| [c.name, "/products?category=#{c.id}"] }), id: "selectbox_categories", class: "dropdown-index", prompt: "Navegue em outra categoria"%>
-      <div class="row">
+      <div class="row-products">
         <div class="col-md-8">
           <div class="products-flexbox">
-            <div class="row">
+            <div class="row-products">
+
+              <%if @products.empty? %>
+              <h2 class="category-empty">Seja o primeiro a vender algum resíduo nesta categoria! </h2>
+              <%end%>
+
               <% @products.each do |product| %>
                 <div class="card-product">
                   <!-- <div class="products-flex-item"> -->
@@ -46,7 +51,6 @@
   </div>
 </div>
 
-
 <div class="map affix-top">
   <div id="map">
     <% content_for(:after_js) do %>
@@ -66,7 +70,7 @@
             $('.map').affix({
               offset: {
                 top: 70,
-                bottom: function () {
+                bottom:  function () {
                   return (this.bottom = $('.footer').outerHeight(true))
                 }
               }
@@ -78,4 +82,6 @@
     <% end %>
   </div>
 </div>
+
+
 

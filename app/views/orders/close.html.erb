@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+      <% @order_itens.each do |order_iten| %>
+        <div class="well">
+          <div class="row">
+            <div class="col-xs-8">
+              <h4><%= order_iten.product.name %></h4>
+              <p><%= order_iten.product.category.root.name %> > <%= order_iten.product.category.name %></p>
+            </div>
+            <div class="col-xs-4">
+              <h4 class="text-right">Valor: <span style="color: green"><%= number_to_currency order_iten.unit_price %></span></h4>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <div class="btn-group">
+        <%= link_to "Editar Kasamba", orders_path, class: "btn btn-danger" } %>
+      </div>
+    </div>
+    <div class="col-xs-8">
+    <%= simple_form_for @order do |f| %>
+    <%= f.error_notification %>
+      <div class="form-inputs">
+        <%= f.input :card_name, label: "Nome do Titular", :input_html => {:style => 'width: 400px'}, hint: "Nome impresso no cartão" %>
+        <%= f.input :card_number, label: "Número do Cartão", :input_html => {:style => 'width: 400px;'} %>
+        <%= f.input :card_expiration, label: "Validade", :input_html => {:style => 'width: 400px'} %>
+        <%= f.input :security_number, label: "Número de Segurança", :input_html => {:style => 'width: 400px'} %>
+        <%= f.input :address, label: "Endereço do Titular", :input_html => {:style => 'width: 400px'} %>
+        <%= f.input :zip_code, label: "CEP", :input_html => {:style => 'width: 400px'} %>
+        <%= f.input :city, label: "Cidade", :input_html => {:style => 'width: 400px'} %>
+        <%= f.input :state, label: "Estado", :input_html => {:style => 'width: 400px'} %>
+        <%= f.input :country, label: "País", :input_html => {:style => 'width: 400px'} %>
+      </div>
+    <div class="form-actions">
+      <%= f.submit "", class: "btn btn-success" %>
+    </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+

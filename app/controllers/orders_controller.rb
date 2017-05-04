@@ -4,4 +4,8 @@ class OrdersController < ApplicationController
     @products = Product.order(view: :desc).first(3)
   end
 
+  def close
+    @order_itens = current_order.order_itens
+  end
+
 end

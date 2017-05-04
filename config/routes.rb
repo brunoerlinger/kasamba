@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resource :orders, only: [:show] do
     member do
       get 'close'
+      post 'pay'
     end
   end
 

@@ -1,6 +1,8 @@
-<div class="container">
+<div class="container padded">
   <div class="row">
     <div class="col-xs-4">
+      <h3>Resumo da <strong>Kasamba</strong></h3>
+      <br>
       <% @order_itens.each do |order_iten| %>
         <div class="well">
           <div class="row">
@@ -8,18 +10,23 @@
               <h4><%= order_iten.product.name %></h4>
               <p><%= order_iten.product.category.root.name %> > <%= order_iten.product.category.name %></p>
             </div>
-            <div class="col-xs-4">
-              <h4 class="text-right">Valor: <span style="color: green"><%= number_to_currency order_iten.unit_price %></span></h4>
+            <div class="col-xs-4 text-right">
+              <h4>Valor</h4>
+              <h4><span style="color: green">R$ <%= order_iten.unit_price %></span></h4>
             </div>
           </div>
         </div>
       <% end %>
+      <h4 class="text-right">Total: R$ <strong><%= current_order.subtotal %></strong></h4>
       <div class="btn-group">
-        <%= link_to "Editar Kasamba", orders_path, class: "btn btn-danger" } %>
+        <%= link_to "Editar Kasamba", orders_path, class: "btn btn-danger" %>
       </div>
     </div>
     <div class="col-xs-8">
-    <%= simple_form_for @order do |f| %>
+    <h3>Informações de Pagamento</h3>
+
+    <br>
+    <%= simple_form_for current_order, url: pay_orders_path, method: :post do |f| %>
     <%= f.error_notification %>
       <div class="form-inputs">
         <%= f.input :card_name, label: "Nome do Titular", :input_html => {:style => 'width: 400px'}, hint: "Nome impresso no cartão" %>
@@ -30,10 +37,10 @@
         <%= f.input :zip_code, label: "CEP", :input_html => {:style => 'width: 400px'} %>
         <%= f.input :city, label: "Cidade", :input_html => {:style => 'width: 400px'} %>
         <%= f.input :state, label: "Estado", :input_html => {:style => 'width: 400px'} %>
-        <%= f.input :country, label: "País", :input_html => {:style => 'width: 400px'} %>
+        <%= f.input :country, as: :string, label: "País", :input_html => {:style => 'width: 400px'} %>
       </div>
     <div class="form-actions">
-      <%= f.submit "", class: "btn btn-success" %>
+      <%= f.submit "Confirmar pagamento", class: "btn btn-success" %>
     </div>
     <% end %>
     </div>

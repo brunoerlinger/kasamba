@@ -3,6 +3,7 @@ class Product < ApplicationRecord
   has_attachments :photos, maximum: 10
   after_validation :geocode, if: :address_changed?
   has_one :order_iten
+  scope :not_sold, -> { where("id not in (?)", Order.where(finished: true).map(&:order_itens).flatten.map(&:product)) }
 
   belongs_to :user
   belongs_to :category

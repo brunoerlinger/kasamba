@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  skip_before_action :authenticate_user!, only: [:home ]
 
   def home
     @categories = Category.all
@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
       @hash = Gmaps4rails.build_markers(@products) do |product, marker|
       marker.lat product.latitude
       marker.lng product.longitude
-      marker.infowindow render_to_string(partial: "/mine/products/map_box_index", locals: { my_product: product })
+      marker.infowindow render_to_string(partial: "/products/map_box_index", locals: { my_product: product })
     end
   end
 end

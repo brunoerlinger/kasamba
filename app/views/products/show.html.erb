@@ -31,6 +31,9 @@
  <h2 style="color: #559771;">Questões para esse produto</h2>
 
   <div class="questions">
+    <% if @questions.empty? %>
+      <h2>Não há questões ainda..</h2>
+    <% end %>
     <% @questions.each  do |question| %>
         <ul class="media-list">
           <li class="media">

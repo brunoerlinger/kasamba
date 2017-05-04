@@ -8,16 +8,16 @@
   <%# end -%>
 
   <div class="form-inline">
+
   <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-    <%= link_to "Crie sua Kasamba", new_registration_path(resource_name), class:"btn btn-success btn-login" %><br />
-    <br>
+    <%= link_to "Crie sua Kasamba", new_registration_path(resource_name), class:"btn btn-success btn-login" %>
   <% end -%>
 
   <%- if devise_mapping.omniauthable? %>
     <%- resource_class.omniauth_providers.each do |provider| %>
-      <%= link_to "Crie sua Kasamba com #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"btn btn-success btn-login" %><br />
+      <%= link_to "Crie sua Kasamba com #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"btn btn-success btn-login" %>
     <% end -%>
-  </div>
+    </div>
 
   <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
     <%= link_to "Não recebeu instruções para confirmação?", new_confirmation_path(resource_name) %><br />
@@ -28,6 +28,8 @@
   <% end -%>
 
   <% end -%>
+  </div>
+  <br>
 
-</div>
+
 

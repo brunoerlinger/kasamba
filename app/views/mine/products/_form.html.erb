@@ -1,19 +1,17 @@
-<div>
-  <%= simple_form_for [:mine, @my_product] do |f| %>
-    <%= f.error_notification %>
-    <%= f.input :name, label: "Resíduo", :input_html => {:style => 'width: 400px'} %>
-    <%= f.input :description, label: "Descrição", as: :text, :input_html => {:style => 'width: 400px; height: 100px'} %>
-    <%= f.input :category_id, label: "Categoria", :input_html => {:style => 'width: 400px'}, collection: @categories, as: :grouped_select, group_method: :children %>
-    <%= f.input :price, as: :string, label: "Preço", :input_html => {:style => 'width: 400px'}, hint: 'Em caso de doação, inserir "0".' %>
-    <%= f.input :address, label: "Endereço", :input_html => {:style => 'width: 400px'} %>
-    <%= f.input :city, label: "Cidade", :input_html => {:style => 'width: 400px'} %>
-    <%= f.input :state, label: "Estado", :input_html => {:style => 'width: 400px'} %>
-    <%= f.input :zip_code, label: "CEP", :input_html => {:style => 'width: 400px'} %>
+<%= simple_form_for [:mine, @my_product] do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name, label: "Resíduo", :input_html => {:style => 'width: 400px'} %>
+  <%= f.input :description, label: "Descrição", as: :text, :input_html => {:style => 'width: 400px; height: 100px'} %>
+  <%= f.input :category_id, label: "Categoria", :input_html => {:style => 'width: 400px'}, collection: @categories, as: :grouped_select, group_method: :children %>
+  <%= f.input :price, as: :string, label: "Preço", :input_html => {:style => 'width: 400px'}, hint: 'Em caso de doação, inserir "0".' %>
+  <%= f.input :address, label: "Endereço", :input_html => {:style => 'width: 400px'} %>
+  <%= f.input :city, label: "Cidade", :input_html => {:style => 'width: 400px'} %>
+  <%= f.input :state, label: "Estado", :input_html => {:style => 'width: 400px'} %>
+  <%= f.input :zip_code, label: "CEP", :input_html => {:style => 'width: 400px'} %>
 
-    <%= f.input :photos, label: "Fotos", as: :attachinary %>
-    <br>
-    <%= f.submit "Kasambar", class: "btn btn-success" %>
-  <% end %>
+  <%= f.input :photos, label: "Fotos", as: :attachinary %>
   <br>
-</div>
+  <%= f.submit "Kasambar", class: "btn btn-success" %>
+<% end %>
+<br>
 

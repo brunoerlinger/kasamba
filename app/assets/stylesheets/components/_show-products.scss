@@ -1,24 +1,14 @@
 .questions{
-  background-color: rgba(230, 230, 230, 0.15);
-    padding-top: 10px;
-    width: 58%;
-    box-shadow: 2px 2px 4px #C9C7CB;
+  padding-top: 10px;
 }
 
 .info-products{
-  background-color: rgba(230, 230, 230, 0.15);
   margin-top: 3px;
-  width: 58%;
-  box-shadow: 2px 2px 4px #C9C7CB;
 }
 
-.info-products h2{
+.card-show h2{
   color: #559771;
-}
-
-.questions h2{
-  font-size: 20px;
-  font-weight: lighter;
+  margin-top: 0;
 }
 
 .submit-question{
@@ -33,4 +23,16 @@
 
 #submit-box{
   margin-bottom: 17px;
+}
+
+.price h3 {
+  font-size: 42px;
+}
+
+.card-show {
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 20px;
+  width: 58%;
+  box-shadow: 2px 2px 4px #C9C7CB;
 }

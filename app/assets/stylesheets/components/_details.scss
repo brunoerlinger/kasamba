@@ -3,7 +3,8 @@
   height: 100%;
   right: 0px;
   top: 0;
-  display: table;
+  display: flex;
+  flex-direction: column;
 }
 
 // html, body {
@@ -118,4 +119,9 @@ body {
 
 .minha-kasamba{
   min-height: 100%;
+}
+
+.photo{
+  flex: 0 0 50%;
+  background-size: cover;
 }

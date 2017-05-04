@@ -1,100 +1,127 @@
 <div class="wrapper-products">
 	<div class="container">
-    <div class="info-products">
-  		 <h2><%= @product.name %></h2>
-  		 <h4><%= @product.category.root.name %> > <%= @product.category.name %><h4>
-       <h4><%= @product.description %></h4>
-       <h4><%= @product.address %></h4>
-  	 	<% if current_user.address.present? %>
-  	 		<span style="font-weight: normal; margin-left: 10px;">
-          <%="(#{(@product.distance_from(current_user)).to_i} km)"%>
-  			</span>
-  		<% end %>
-      <h3 style="color: green;"><%= number_to_currency @product.price %></h3>
-
-  		<%= form_for @order_iten, remote: true do |f| %>
-  		<div class="input-group">
-  			<div class="input-group-btn">
-  				<% if current_user != @product.user %>
-           <%= f.hidden_field :product_id, value: @product.id %>
-            <%= f.submit "Quero esse resíduo!", class: "btn btn-success" %>
-          <% else %>
-            $('.link-button').on('click',function() {
-              $(this).prop("disabled",true);
-            });
-          <% end %>
-  			</div>
-  		</div>
-  		<%end%>
+    <h1><%= @product.name %></h1>
+    <div class="card-show info-products">
+      <h2>Detalhes</h2>
+  		<p><%= @product.category.root.name %> > <%= @product.category.name %><p>
+      <p><%= @product.description %></p>
+      <p>
+        <% if current_user.address.present? %>
+          <span style="font-weight: normal; margin-left: 10px;">
+            <%="(#{(@product.distance_from(current_user)).to_i} km)"%>
+          </span>
+        <% end %>
+        <br>
+        <%= @product.address %>
+      </p>
     </div>
 
- <h2 style="color: #559771;">Questões para esse produto</h2>
 
-  <div class="questions">
-    <% if @questions.empty? %>
-      <h2>Não há questões ainda..</h2>
-    <% end %>
-    <% @questions.each  do |question| %>
-        <ul class="media-list">
-          <li class="media">
-            <div class="media-left">
-              <%= image_tag avatar_url(question.user), class: "info-product media-object"%>
-            </div>
+    <div class="card-show price">
+      <h2>Buy</h2>
+      <div class="text-center">
+        <h3 class="secondary-color"><%= number_to_currency @product.price %></h3>
+        <%= form_for @order_iten, remote: true do |f| %>
+          <% if current_user != @product.user %>
+            <%= f.hidden_field :product_id, value: @product.id %>
+            <%= f.submit "Quero esse resíduo!", class: "btn btn-success btn-block" %>
+          <% end %>
+        <%end%>
+      </div>
+    </div>
 
-            <div class="media-body">
-              <h4 class="media-heading"><%= question.user.username %></h4>
-              <p><%= question.question %></p>
-              <!-- Nested media object -->
-              <% if question.answer != nil %>
-                <div class="media">
-                  <div class="media-left">
-                     <%= image_tag avatar_url(@product.user), class: "info-product media-object"%>
+    <div class="card-show questions">
+      <h2>Questões para esse produto</h2>
+      <% if @questions.empty? %>
+        <p>Não há questões ainda.</p>
+      <% else %>
+        <% @questions.each  do |question| %>
+          <ul class="media-list">
+            <li class="media">
+              <div class="media-left">
+                <%= image_tag avatar_url(question.user), class: "info-product media-object" %>
+              </div>
+              <div class="media-body">
+                <p>
+                  <%= question.user.username %>:<br>
+                  <strong><%= question.question %></strong>
+                </p>
+                <!-- Nested media object -->
+                <% if question.answer != nil %>
+                  <div class="media">
+                    <div class="media-left">
+                       <%= image_tag avatar_url(@product.user), class: "info-product media-object"%>
+                    </div>
+
+                    <div class="media-body">
+                      <p>
+                        <%=@product.user.username%>:<br>
+                        <%= question.answer %>
+                      </p>
+                    </div>
                   </div>
-
-                  <div class="media-body">
-                    <h4 class="media-heading"><%=@product.user.username%></h4>
-                      <p><%= question.answer %></p>
-                  </div>
-                </div>
-
-                <%elsif current_user == @product.user %>
+                <% elsif current_user == @product.user %>
                   <div id="submit-box">
                     <%= simple_form_for(question, url: mine_answer_path(question)) do |form| %>
-                      <%= form.input :answer, class: 'submit-box' %>
-                      <%= form.button :submit, class: 'submit-question btn btn-success' %>
+                      <%= form.input :answer, label: "Resposta", class: 'submit-box' %>
+                      <%= form.button :submit, "Responder", class: 'submit-question btn btn-success' %>
                     <% end %>
                   </div>
-              <% end %>
-            </div>
-          </li>
-        </ul>
-    <% end %>
-  </div>
-
-  <%# @questions.each  do |question| %>
-    <%#= question.question %>
-    <%# if question.answer != nil %>
-      <!-- <h4><%#= question.answer %></h4> -->
-    <%# end %>
-
-  <div class="map affix-top">
-    <div id="map">
-      <% content_for(:after_js) do %>
-       <%= javascript_tag do %>
-           $(document).ready(function() {
-             var handler = Gmaps.build('Google');
-             handler.buildMap({ internal: { id: 'map' } }, function() {
-             markers = handler.addMarkers(<%= raw @hash.to_json %>);
-             handler.bounds.extendWith(markers);
-             handler.fitMapToBounds();
-             if (markers.length == 0) {
-              handler.getMap().setZoom(6);
-             }
-             });
-           });
+                <% end %>
+              </div>
+            </li>
+          </ul>
         <% end %>
       <% end %>
+      <hr>
+      <div>
+        <h4>Ask a question:</h4>
+          <%= simple_form_for([@product, @question]) do |form| %>
+            <%= form.input :question, label: "Pergunta", class: 'submit-box' %>
+            <%= form.button :submit, "Perguntar", class: 'submit-question btn btn-success' %>
+          <% end %>
+          <div class="text-right">
+          <%= link_to "Voltar", :back, class: "button-update btn btn-success" %>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</div>
+
+    <%# @questions.each  do |question| %>
+      <%#= question.question %>
+      <%# if question.answer != nil %>
+        <!-- <h4><%#= question.answer %></h4> -->
+      <%# end %>
+
+      <div class="map affix-top">
+        <% if @product.photos? %>
+          <div class="photo" style="background-image: url('<%= @product.photos.first.fullpath %>')"></div>
+        <% end %>
+        <div id="map">
+          <% content_for(:after_js) do %>
+           <%= javascript_tag do %>
+               $(document).ready(function() {
+                 var handler = Gmaps.build('Google');
+                 handler.buildMap({ internal: { id: 'map' } }, function() {
+                 markers = handler.addMarkers(<%= raw @hash.to_json %>);
+                 handler.bounds.extendWith(markers);
+                 handler.fitMapToBounds();
+                 if (markers.length == 0) {
+                  handler.getMap().setZoom(6);
+                 }
+                 });
+
+                $('.map').affix({
+                  offset: {
+                    top: 70,
+                    bottom:  function () {
+                      return (this.bottom = $('.footer').outerHeight(true))
+                    }
+                  }
+                })
+               });
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+ </div>

@@ -7,7 +7,7 @@
     <%#= link_to "Entrar", new_session_path(resource_name), class:"btn btn-success btn-login" %>
   <%# end -%>
 
-  <div class="">
+  <div class="form-inline">
   <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
     <%= link_to "Crie sua Kasamba", new_registration_path(resource_name), class:"btn btn-success btn-login" %><br />
     <br>

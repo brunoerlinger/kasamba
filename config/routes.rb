@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'errors/not_found'
+
+  get 'errors/internal_server_error'
+
   get 'order_itens/create'
 
   get 'order_itens/edit'
@@ -25,12 +29,16 @@ Rails.application.routes.draw do
   resource :orders, only: [:show]
 
   resources :order_itens, only: [:create, :update, :destroy]
-  
+
   resources :products do
     resources :questions, only: [ :create, :destroy]
   end
 
 
   mount Attachinary::Engine => "/attachinary"
+
+  match "/404", :to => "errors#not_found", :via => :all
+
+  match "/500", :to => "errors#internal_server_error", :via => :all
 
 end

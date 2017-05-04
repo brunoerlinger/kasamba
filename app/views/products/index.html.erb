@@ -8,7 +8,10 @@
             <div class="row-products">
 
               <%if @products.empty? %>
-              <h2 class="category-empty">Seja o primeiro a vender algum resíduo nesta categoria! </h2>
+                <div class="category-empty">
+                  <h2> Seja o primeiro a vender algum resíduo nesta categoria!</h2>
+                  <%= link_to 'Kasambe um novo resíduo!', new_mine_product_path, class: "btn btn-success button-index-kassambe"  %>
+                </div>
               <%end%>
 
               <% @products.each do |product| %>
@@ -66,7 +69,6 @@
            }
            });
 
-
             $('.map').affix({
               offset: {
                 top: 70,
@@ -75,13 +77,10 @@
                 }
               }
             })
-
-
          });
       <% end %>
     <% end %>
   </div>
 </div>
-
 
 

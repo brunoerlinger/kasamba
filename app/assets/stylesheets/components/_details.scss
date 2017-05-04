@@ -1,7 +1,7 @@
 .map{
   width: 519px;
   height: 100%;
-  right: 20px;
+  right: 0px;
   top: 0;
   display: table;
 }
@@ -37,13 +37,12 @@
 // }
 
 .dropdown-index{
-  width: 100%;
+  width: 700px;
 }
 
 .container-products{
   margin-top: 35px;
   margin-left: 63px;
-  flex: 0 1 50%;
 }
 
 .row-products{
@@ -112,4 +111,3 @@ body {
     /* line-height: 626px; */
     margin-top: 140px;
 }
-

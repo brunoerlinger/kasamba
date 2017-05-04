@@ -1,0 +1,5 @@
+meta_product_name: "Kasamba"
+meta_title: "Kasamba - Lixo não precisa ser Lixo"
+meta_description: "Lixo não precisa ser lixo"
+meta_image: "upcycling.jpg"                       # should exist in `app/assets/images/`
+twitter_account: "@kasamba_onlne"   # required for Twitter Cards

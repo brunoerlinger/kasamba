@@ -5,9 +5,9 @@ class QuestionsController < ApplicationController
     @question.user = current_user
     @question.product = @product
     if @question.save
-      flash[:notice] = "#{@question.question} adicionado"
+      flash[:notice] = "Sua questão foi adicionada!"
       # @question.status = "New"
-      redirect_to products_path(category: @question.product.category.id)
+      redirect_to product_path(@product)
     else
       p @question.errors
       @questions = @product.questions

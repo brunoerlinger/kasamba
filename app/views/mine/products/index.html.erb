@@ -2,7 +2,14 @@
   <h2>Minha Kasamba</h2>
   <hr>
   <% @my_products.each do |product|  %>
-    <h3><%= link_to product.name, mine_product_path(product), style:"color:#299D7D; " %></h3>
+    <h3>
+      <%= link_to product.name, mine_product_path(product), style:"color:#299D7D; " %>
+      <% if product.questions.to_respond.count > 0 %>
+        <span class="label label-default">
+          <%= product.questions.to_respond.count %> question(s)
+        </span>
+      <% end %>
+    </h3>
   <% end %>
   <br>
 

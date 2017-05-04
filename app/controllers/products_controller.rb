@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   def index
     @categories = Category.all
     @category = Category.find(params[:category])
-    @products = Product.where(category_id: @category.subtree_ids)
+    @products = Product.where(category_id: @category.subtree_ids).not_sold
     @order_iten = current_order.order_itens.new
     gmaps(@products)
   end

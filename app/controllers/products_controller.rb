@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
     @category = Category.find(params[:category])
     @products = Product.where(category_id: @category.subtree_ids)
     @order_iten = current_order.order_itens.new
-    gmaps
+    gmaps(@products)
   end
 
   def show
@@ -24,11 +24,11 @@ class ProductsController < ApplicationController
       @product.view = @product.view += 1
     end
     @product.save
-    gmaps
+    gmaps([@product])
   end
 
-  def gmaps
-      @hash = Gmaps4rails.build_markers(@products) do |product, marker|
+  def gmaps(products)
+      @hash = Gmaps4rails.build_markers(products) do |product, marker|
       marker.lat product.latitude
       marker.lng product.longitude
       marker.infowindow render_to_string(partial: "/products/map_box_index", locals: { my_product: product })

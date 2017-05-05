@@ -6,11 +6,11 @@
   		<p><%= @product.category.root.name %> > <%= @product.category.name %><p>
       <p><%= @product.description %></p>
       <p>
-        <% if current_user.address.present? %>
-          <span style="font-weight: normal; margin-left: 10px;">
-            <%="(#{(@product.distance_from(current_user)).to_i} km)"%>
-          </span>
-        <% end %>
+      <% if current_user.address.present? %>
+        <span style="font-weight: normal;">
+          <%="Essa é a distância entre você e o resíduo: #{(@my_product.distance_from(current_user)).to_i} km"%>
+        </span>
+      <% end %>
         <br>
         <%= @product.address %>
       </p>
@@ -75,11 +75,13 @@
       <% end %>
       <hr>
       <div>
+      <% if current_user != @product.user %>
         <h4>Ask a question:</h4>
           <%= simple_form_for([@product, @question]) do |form| %>
             <%= form.input :question, label: "Pergunta", class: 'submit-box' %>
             <%= form.button :submit, "Perguntar", class: 'submit-question btn btn-success' %>
           <% end %>
+      <%end%>
           <div class="text-right">
           <%= link_to "Voltar", :back, class: "button-update btn btn-success" %>
         </div>

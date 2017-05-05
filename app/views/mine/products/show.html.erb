@@ -6,13 +6,8 @@
       <p><%= @my_product.category.root.name %> > <%= @my_product.category.name %><p>
       <p><%= @my_product.description %></p>
       <p>
-        <% if current_user.address.present? %>
-          <span style="font-weight: normal; margin-left: 10px;">
-            <%="(#{(@my_product.distance_from(current_user)).to_i} km)"%>
-          </span>
-        <% end %>
-        <br>
-        <%= @my_product.address %>
+      <br>
+      <%= @my_product.address %>
       </p>
     </div>
 
@@ -32,7 +27,7 @@
           <ul class="media-list">
             <li class="media">
               <div class="media-left">
-                <%= image_tag avatar_url(question.user), class: "info-@my_product media-object" %>
+                <%= image_tag avatar_url(question.user), class: "info-product media-object" %>
               </div>
               <div class="media-body">
                 <p>
@@ -43,7 +38,7 @@
                 <% if question.answer != nil %>
                   <div class="media">
                     <div class="media-left">
-                       <%= image_tag avatar_url(@my_product.user), class: "info-@my_product media-object"%>
+                       <%= image_tag avatar_url(@my_product.user), class: "info-product media-object"%>
                     </div>
 
                     <div class="media-body">

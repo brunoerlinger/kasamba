@@ -7,7 +7,7 @@
       <p><%= @product.description %></p>
       <% if current_user.address.present? %>
         <span style="font-weight: normal;">
-          <%="Essa é a distância entre você e o resíduo: #{(@my_product.distance_from(current_user)).to_i} km"%>
+          <%="Essa é a distância entre você e o resíduo: #{(@product.distance_from(current_user)).to_i} km"%>
         </span>
       <% end %>
       <br>

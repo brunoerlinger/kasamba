@@ -75,10 +75,8 @@
       <% end %>
       <hr>
       <div>
-
-      <% if current_user != @product.user %>
+      <% if current_user != @product.user%>
         <h4>Faça uma pergunta:</h4>
-
           <%= simple_form_for([@product, @question]) do |form| %>
             <%= form.input :question, label: "Pergunta", class: 'submit-box' %>
             <%= form.button :submit, "Perguntar", class: 'submit-question btn btn-success' %>

@@ -7,13 +7,8 @@
       <p><%= @my_product.description %></p>
       <h4 class="secondary-color">R$ <%= @my_product.price %></h4>
       <p>
-        <% if current_user.address.present? %>
-          <span style="font-weight: normal; margin-left: 10px;">
-            <%="(#{(@my_product.distance_from(current_user)).to_i} km)"%>
-          </span>
-        <% end %>
-        <br>
-        <%= @my_product.address %>
+      <br>
+      <%= @my_product.address %>
       </p>
     </div>
 

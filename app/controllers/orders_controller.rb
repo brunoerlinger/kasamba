@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   def show
     @order_itens = current_order.order_itens
-    @products = Product.not_sold.order(view: :desc).first(3)
+    @products = Product.order(view: :desc).first(3)
   end
 
   def close
@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def pay
-    current_order.update! finished: true
+    current_order.destroy
     session[:order_id] = nil
     redirect_to root_path, notice: "Compra concluída com sucesso no Kasamba.online!"
   end

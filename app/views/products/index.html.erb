@@ -17,13 +17,13 @@
                 <div class="card-product">
                   <!-- <div class="products-flex-item"> -->
                     <div class="card-product-user text-center">
-                      <h3 id="card-text-user"> <%= product.category.name %>
+                      <h3 id="card-text-user"> <%= product.name %></h3>
                         <% if current_user.address.present? %>
-                          <span style="font-weight: normal; margin-left: 10px;">
+                          <h4 id="card-text-user"><span style="font-weight: normal; margin-left: 10px;">
                             <%="(#{(product.distance_from(current_user)).to_i} km)"%>
                           </span>
                         <% end %>
-                      </h3>
+                      </h4>
                     </div>
                     <div class="card-category text-center">
                     <h5 id="card-text-category"> Resíduo de <%= product.user.first_name %></h5>

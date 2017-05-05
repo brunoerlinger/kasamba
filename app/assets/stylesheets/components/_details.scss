@@ -28,6 +28,7 @@
 .products-flexbox{
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 // .products-flex-item{
@@ -42,7 +43,7 @@
 
 .container-products{
   margin-top: 35px;
-  margin-left: 63px;
+  margin-left: 0;
 }
 
 .row-products{

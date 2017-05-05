@@ -9,12 +9,12 @@ class OrderItensController < ApplicationController
   # def edit
   # end
 
-  # # def update
-  # #   @order = current_order
-  # #   @order_iten = @order.order_itens.find(params[:id])
-  # #   @order_iten.update_attributes(order_iten_params)
-  # #   @order_itens = @order.order_itens
-  # # end
+  def update
+    @order = current_order
+    @order_iten = @order.order_itens.find(params[:id])
+    @order_iten.update_attributes(order_iten_params)
+    @order_itens = @order.order_itens
+  end
 
   def destroy
     @order = current_order

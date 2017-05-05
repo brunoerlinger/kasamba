@@ -1,56 +1,103 @@
-<div class="container">
-  <h2><%= @my_product.name %></h2>
-  <h4><%= @my_product.description %></h4>
-  <h4><%= @my_product.category.name %></h4>
-  <h4><%= @my_product.price %></h4>
+<div class="wrapper-products">
+  <div class="container">
+    <h1><%= @my_product.name %></h1>
+    <div class="card-show info-@my_products">
+      <h2>Detalhes</h2>
+      <p><%= @my_product.category.root.name %> > <%= @my_product.category.name %><p>
+      <p><%= @my_product.description %></p>
+      <p>
+        <% if current_user.address.present? %>
+          <span style="font-weight: normal; margin-left: 10px;">
+            <%="(#{(@my_product.distance_from(current_user)).to_i} km)"%>
+          </span>
+        <% end %>
+        <br>
+        <%= @my_product.address %>
+      </p>
+    </div>
 
-  <%= link_to "Editar", edit_mine_product_path(@my_product), class: "btn btn-primary" %>
+  <div class="card-show price">
+    <%= link_to "Visualizar como comprador", product_path(@my_product), class: "btn btn-success" %>
+    <%= link_to "Voltar a minha Kasamba", mine_products_path, class: "button-show btn btn-success" %>
+    <%= link_to "Editar", edit_mine_product_path(@my_product), class: "btn btn-success" %>
+    <%= link_to "Deletar", mine_product_path(@my_product), class: "button-show btn btn-danger", method: :delete, data: { confirm: "Você tem certeza?" } %>
+  </div>
 
-  <%= link_to "Deletar", mine_product_path(@my_product), class: "button-show btn btn-danger", method: :delete, data: { confirm: "Você tem certeza?" } %>
+    <div class="card-show questions">
+      <h2>Questões para esse produto</h2>
+      <% if @questions.empty? %>
+        <p>Não há questões ainda.</p>
+      <% else %>
+        <% @questions.each  do |question| %>
+          <ul class="media-list">
+            <li class="media">
+              <div class="media-left">
+                <%= image_tag avatar_url(question.user), class: "info-@my_product media-object" %>
+              </div>
+              <div class="media-body">
+                <p>
+                  <%= question.user.username %>:<br>
+                  <strong><%= question.question %></strong>
+                </p>
+                <!-- Nested media object -->
+                <% if question.answer != nil %>
+                  <div class="media">
+                    <div class="media-left">
+                       <%= image_tag avatar_url(@my_product.user), class: "info-@my_product media-object"%>
+                    </div>
 
-  <%= link_to "Ir para a minha Kasamba",  mine_products_path, method: "get", class: "button-show btn btn-warning" %>
-<br>
-
-  <% if @my_product.photos? %>
-    <% @my_product.photos.each do |photo| %>
-      <%= cl_image_tag photo.path, width: 200, height: 300, crop: :fill %>
-    <% end %>
-  <% end %>
-
-
-
-  <div id="map" style="width: 50%; height: 500px;"></div>
-    <% content_for(:after_js) do %>
-      <%= javascript_tag do %>
-        $(document).ready(function() {
-          var handler = Gmaps.build('Google');
-          handler.buildMap({ internal: { id: 'map' } }, function() {
-            markers = handler.addMarkers(<%= raw @hash.to_json %>);
-            handler.bounds.extendWith(markers);
-            handler.fitMapToBounds();
-            if (markers.length == 0) {
-              handler.getMap().setZoom(2);
-            } else if (markers.length == 1) {
-              handler.getMap().setZoom(14);
-            }
-          });
-        });
+                    <div class="media-body">
+                      <p>
+                        <%=@my_product.user.username%>:<br>
+                        <%= question.answer %>
+                      </p>
+                    </div>
+                  </div>
+                <% elsif current_user == @my_product.user %>
+                  <div id="submit-box">
+                    <%= simple_form_for(question, url: mine_answer_path(question)) do |form| %>
+                      <%= form.input :answer, label: "Resposta", class: 'submit-box' %>
+                      <%= form.button :submit, "Responder", class: 'submit-question btn btn-success' %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </li>
+          </ul>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
 
-  <% @questions.each do |question| %>
-    <h2><%= question.user.first_name %></h2>
-    <%= question.question %>
+      <div class="map affix-top">
+        <% if @my_product.photos? %>
+          <div class="photo" style="background-image: url('<%= @my_product.photos.first.fullpath %>')"></div>
+        <% end %>
+      <div id="map">
+        <% content_for(:after_js) do %>
+         <%= javascript_tag do %>
+             $(document).ready(function() {
+               var handler = Gmaps.build('Google');
+               handler.buildMap({ internal: { id: 'map' } }, function() {
+               markers = handler.addMarkers(<%= raw @hash.to_json %>);
+               handler.bounds.extendWith(markers);
+               handler.fitMapToBounds();
+               if (markers.length == 0) {
+                handler.getMap().setZoom(6);
+               }
+               });
 
-    <% if question.answer.nil? %>
-      <%= simple_form_for(question, url: mine_answer_path(question)) do |form| %>
-        <%= form.input :answer %>
-        <%= form.button :submit %>
-      <% end %>
-    <% else %>
-      <h4><%= question.answer %></h4>
-    <% end %>
-  <% end %>
-
-  <br>
+              $('.map').affix({
+                offset: {
+                  top: 70,
+                  bottom:  function () {
+                    return (this.bottom = $('.footer').outerHeight(true))
+                  }
+                }
+              })
+             });
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
